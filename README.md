@@ -1,26 +1,27 @@
 utf8string
 ==========
 
-Производный от std::u8string класс std::utf8string и класс итераторов к utf8string, для работы с 
-мультибайтовыми UTF-8 строками в кодировке Windows.1251.
+РџСЂРѕРёР·РІРѕРґРЅС‹Р№ РѕС‚ std::u8string РєР»Р°СЃСЃ std::utf8string Рё РєР»Р°СЃСЃ РёС‚РµСЂР°С‚РѕСЂРѕРІ Рє utf8string, РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ 
+РјСѓР»СЊС‚РёР±Р°Р№С‚РѕРІС‹РјРё UTF-8 СЃС‚СЂРѕРєР°РјРё РІ РєРѕРґРёСЂРѕРІРєРµ Windows.1251.
 
-Класс utf8string содержит все(ну, почти все) методы класса std::u8string,
-работает с библиотекой STL.
+РљР»Р°СЃСЃ utf8string СЃРѕРґРµСЂР¶РёС‚ РІСЃРµ(РЅСѓ, РїРѕС‡С‚Рё РІСЃРµ) РјРµС‚РѕРґС‹ РєР»Р°СЃСЃР° std::u8string,
+СЂР°Р±РѕС‚Р°РµС‚ СЃ Р±РёР±Р»РёРѕС‚РµРєРѕР№ STL.
 
 README.md               
-algorithm_utf8.hpp      некоторые дополнение к алгоритмам библиотеки STL.
-str8_utils.hpp          функции, используемые в обработке строк с символами char8_t 
-sample.cpp              пример
-utf8string.hpp          класс utf8string
-u8_iterator.hpp         класс итераторов к utf8string
-my_adds.hpp             некоторые дополнительные процедуры
-ansi_tabs.hpp           таблицы и процедуры
-cp1251.hpp              таблицы и процедуры
-stdc++.h                заголовочный файл для sample.cpp
+algorithm_utf8.hpp      РЅРµРєРѕС‚РѕСЂС‹Рµ РґРѕРїРѕР»РЅРµРЅРёРµ Рє Р°Р»РіРѕСЂРёС‚РјР°Рј Р±РёР±Р»РёРѕС‚РµРєРё STL.
+str8_utils.hpp          С„СѓРЅРєС†РёРё, РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ РІ РѕР±СЂР°Р±РѕС‚РєРµ СЃС‚СЂРѕРє СЃ СЃРёРјРІРѕР»Р°РјРё char8_t 
+sample.cpp              РїСЂРёРјРµСЂ
+utf8string.hpp          РєР»Р°СЃСЃ utf8string
+u8_iterator.hpp         РєР»Р°СЃСЃ РёС‚РµСЂР°С‚РѕСЂРѕРІ Рє utf8string
+my_adds.hpp             РЅРµРєРѕС‚РѕСЂС‹Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїСЂРѕС†РµРґСѓСЂС‹
+ansi_tabs.hpp           С‚Р°Р±Р»РёС†С‹ Рё РїСЂРѕС†РµРґСѓСЂС‹
+cp1251.hpp              С‚Р°Р±Р»РёС†С‹ Рё РїСЂРѕС†РµРґСѓСЂС‹
+stdc++.h                Р·Р°РіРѕР»РѕРІРѕС‡РЅС‹Р№ С„Р°Р№Р» РґР»СЏ sample.cpp
 
-Испытано и проверено в windows 10, с компилятором от Visual Studio 2022 версия 17.2
+РСЃРїС‹С‚Р°РЅРѕ Рё РїСЂРѕРІРµСЂРµРЅРѕ РІ windows 10, СЃ РєРѕРјРїРёР»СЏС‚РѕСЂРѕРј РѕС‚ Visual Studio 2022 РІРµСЂСЃРёСЏ 17.2
 
-компиляция с редактированием
+РєРѕРјРїРёР»СЏС†РёСЏ СЃ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµРј
 cl.exe /permissive- /clr:nostdlib /openmp /Ot /O2 /Ox /sdl /std:c++latest /D WIN32 /D NDEBUG /diagnostics:caret /Zc:lambda,hiddenFriend,implicitNoexcept,externConstexpr /analyze- /nologo /W4 /MP /GS /Gm- /GF /GL /Gw /Oi /Zc:preprocessor,strictStrings-,forScope,__cplusplus,inline,wchar_t,auto /GA /GR /EHac /Qpar /Qpar-report:1 /fp:precise /TP test.cpp
-                                или
+                                РёР»Рё
 cl.exe -permissive- /analyze- /Ot /O2 /Ox /sdl /std:c++latest /D WIN32 /D NDEBUG /await:strict /diagnostics:caret /Zc:implicitNoexcept,externConstexpr /MT /openmp /nologo /W4 /MP /GS /Gm- /GF /GL /Gw /Oi /Zc:preprocessor,strictStrings-,forScope,__cplusplus,inline,wchar_t,auto /GA /GR /EHac /Qpar /Qpar-report:1 /fp:precise /TP test.cpp
+

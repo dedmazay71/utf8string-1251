@@ -1,16 +1,16 @@
 //
 // algorithm_utf8.hpp   -- Alexander Prilepsky 2022
 //
-// Ётот заголовочный файл содержит функции из библиотеки алгоритмов дл€ работы с UTF-8 строками из
-// класс  std::utf8string и его итераторами.
+// –≠—В–Њ—В –Ј–∞–≥–Њ–ї–Њ–≤–Њ—З–љ—Л–є —Д–∞–є–ї —Б–Њ–і–µ—А–ґ–Є—В —Д—Г–љ–Ї—Ж–Є–Є –Є–Ј –±–Є–±–ї–Є–Њ—В–µ–Ї–Є –∞–ї–≥–Њ—А–Є—В–Љ–Њ–≤ –і–ї—П —А–∞–±–Њ—В—Л —Б UTF-8 —Б—В—А–Њ–Ї–∞–Љ–Є –Є–Ј
+// –Ї–ї–∞—Б—Б  std::utf8string –Є –µ–≥–Њ –Є—В–µ—А–∞—В–Њ—А–∞–Љ–Є.
 //
-// ѕ–ќ√–јћћЌќ≈ ќЅ≈—ѕ≈„≈Ќ»≈ ѕ–≈ƒќ—“ј¬Ћя≈“—я " ј  ≈—“№", Ѕ≈«  ј »’-Ћ»Ѕќ √ј–јЌ“»…,
-// я¬Ќџ≈ »Ћ» ѕќƒ–ј«”ћ≈¬ј≈ћџ≈, ¬ Ћё„јя, Ќќ Ќ≈ ќ√–јЌ»„»¬јя—№ √ј–јЌ“»яћ»
-// “ќ¬ј–Ќјя ѕ–»√ќƒЌќ—“№, ѕ–»√ќƒЌќ—“№ ƒЋя ќѕ–≈ƒ≈Ћ≈ЌЌќ… ÷≈Ћ» » ќ“—”“—“¬»≈ Ќј–”Ў≈Ќ»….
-// Ќ» ¬  ќ≈ћ —Ћ”„ј≈ ј¬“ќ– Ќ≈ Ќ≈—≈“ ќ“¬≈“—“¬≈ЌЌќ—“» «ј  ј »≈-Ћ»Ѕќ ѕ–≈“≈Ќ«»», ”Ѕџ“ » »Ћ»
-// »Ќјя ќ“¬≈“—“¬≈ЌЌќ—“№, Ѕ”ƒ№ “ќ ¬ —»Ћ” ƒќ√ќ¬ќ–ј, ƒ≈Ћ» “ј »Ћ» »Ќџћ ќЅ–ј«ќћ,
-// ¬џ“≈ јёў»≈ »«, »Ћ» ¬ —¬я«» — ѕ–ќ√–јћћЌџћ ќЅ≈—ѕ≈„≈Ќ»≈ћ »Ћ» »—ѕќЋ№«ќ¬јЌ»≈ћ »Ћ»
-// ƒ–”√»≈ —ƒ≈Ћ » — ѕ–ќ√–јћћЌџћ ќЅ≈—ѕ≈„≈Ќ»≈ћ.
+// –Я–†–Ю–У–†–Р–Ь–Ь–Э–Ю–Х –Ю–С–Х–°–Я–Х–І–Х–Э–Ш–Х –Я–†–Х–Ф–Ю–°–Ґ–Р–Т–Ы–ѓ–Х–Ґ–°–ѓ "–Ъ–Р–Ъ –Х–°–Ґ–ђ", –С–Х–Ч –Ъ–Р–Ъ–Ш–•-–Ы–Ш–С–Ю –У–Р–†–Р–Э–Ґ–Ш–Щ,
+// –ѓ–Т–Э–Ђ–Х –Ш–Ы–Ш –Я–Ю–Ф–†–Р–Ч–£–Ь–Х–Т–Р–Х–Ь–Ђ–Х, –Т–Ъ–Ы–Ѓ–І–Р–ѓ, –Э–Ю –Э–Х –Ю–У–†–Р–Э–Ш–І–Ш–Т–Р–ѓ–°–ђ –У–Р–†–Р–Э–Ґ–Ш–ѓ–Ь–Ш
+// –Ґ–Ю–Т–Р–†–Э–Р–ѓ –Я–†–Ш–У–Ю–Ф–Э–Ю–°–Ґ–ђ, –Я–†–Ш–У–Ю–Ф–Э–Ю–°–Ґ–ђ –Ф–Ы–ѓ –Ю–Я–†–Х–Ф–Х–Ы–Х–Э–Э–Ю–Щ –¶–Х–Ы–Ш –Ш –Ю–Ґ–°–£–Ґ–°–Ґ–Т–Ш–Х –Э–Р–†–£–®–Х–Э–Ш–Щ.
+// –Э–Ш –Т –Ъ–Ю–Х–Ь –°–Ы–£–І–Р–Х –Р–Т–Ґ–Ю–† –Э–Х –Э–Х–°–Х–Ґ –Ю–Ґ–Т–Х–Ґ–°–Ґ–Т–Х–Э–Э–Ю–°–Ґ–Ш –Ч–Р –Ъ–Р–Ъ–Ш–Х-–Ы–Ш–С–Ю –Я–†–Х–Ґ–Х–Э–Ч–Ш–Ш, –£–С–Ђ–Ґ–Ъ–Ш –Ш–Ы–Ш
+// –Ш–Э–Р–ѓ –Ю–Ґ–Т–Х–Ґ–°–Ґ–Т–Х–Э–Э–Ю–°–Ґ–ђ, –С–£–Ф–ђ –Ґ–Ю –Т –°–Ш–Ы–£ –Ф–Ю–У–Ю–Т–Ю–†–Р, –Ф–Х–Ы–Ш–Ъ–Ґ–Р –Ш–Ы–Ш –Ш–Э–Ђ–Ь –Ю–С–†–Р–Ч–Ю–Ь,
+// –Т–Ђ–Ґ–Х–Ъ–Р–Ѓ–©–Ш–Х –Ш–Ч, –Ш–Ы–Ш –Т –°–Т–ѓ–Ч–Ш –° –Я–†–Ю–У–†–Р–Ь–Ь–Э–Ђ–Ь –Ю–С–Х–°–Я–Х–І–Х–Э–Ш–Х–Ь –Ш–Ы–Ш –Ш–°–Я–Ю–Ы–ђ–Ч–Ю–Т–Р–Э–Ш–Х–Ь –Ш–Ы–Ш
+// –Ф–†–£–У–Ш–Х –°–Ф–Х–Ы–Ъ–Ш –° –Я–†–Ю–У–†–Р–Ь–Ь–Э–Ђ–Ь –Ю–С–Х–°–Я–Х–І–Х–Э–Ш–Х–Ь.
 //
 //                      c++ Visual Studio 2022 version 17.2
 //
@@ -24,12 +24,12 @@ std::iter_diff_t<iter8> distance(const iter8& first, const iter8& last) {
         return last - first;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                      предыдущий итератор
+//                                      –њ—А–µ–і—Л–і—Г—Й–Є–є –Є—В–µ—А–∞—В–Њ—А
 [[nodiscard]] inline
 iter8 prev_iter(const iter8& it_src, std::iter_diff_t<iter8>const pos = 1) { 
     return  it_src - pos; 
 }
-//                                      следующий итератор
+//                                      —Б–ї–µ–і—Г—О—Й–Є–є –Є—В–µ—А–∞—В–Њ—А
 [[nodiscard]] inline
 iter8 next_iter(const iter8& it_src, std::iter_diff_t<iter8>const pos = 1) { 
     return it_src + pos;
@@ -43,14 +43,14 @@ iter8 next(const iter8& first, std::iter_diff_t<iter8> pos = 1) { // increment i
 iter8 prev(const iter8& first, std::iter_diff_t<iter8> pos = 1) { // decrement iterator
     return prev_iter(first, pos);
 }
-////////////////////////////////////////////////  —ортировки  /////////////////////////////////////////////////
+////////////////////////////////////////////////  –°–Њ—А—В–Є—А–Њ–≤–Ї–Є  /////////////////////////////////////////////////
 //                                                quick_sort                                                   
-//                                  Ѕыстра€ сортировка на основе библиотеки STL
+//                                  –С—Л—Б—В—А–∞—П —Б–Њ—А—В–Є—А–Њ–≤–Ї–∞ –љ–∞ –Њ—Б–љ–Њ–≤–µ –±–Є–±–ї–Є–Њ—В–µ–Ї–Є STL
 //-------------------------------------------------------------------------------------------------------------
 template< typename BidirectionalIterator, typename Compare> constexpr
 std::enable_if_t<(std::is_class_v<BidirectionalIterator>  &&
                   std::is_any_of_v<typename BidirectionalIterator::pointer, char8_t*, const char8_t*>
-                 )>  // по умолчанию void
+                 )>  // –њ–Њ —Г–Љ–Њ–ї—З–∞–љ–Є—О void
 quick_sort(BidirectionalIterator first, BidirectionalIterator last, Compare&& cmp) {
     if(first < last) {
         BidirectionalIterator left  = first;
@@ -74,7 +74,7 @@ quick_sort(BidirectionalIterator first, BidirectionalIterator last, Compare&& cm
 template<class BidirectionalIterator> constexpr
 std::enable_if_t<(std::is_class_v<BidirectionalIterator>  &&
                   std::is_any_of_v<typename BidirectionalIterator::pointer, char8_t*, const char8_t*>
-                 )>  // по умолчанию void
+                 )>  // –њ–Њ —Г–Љ–Њ–ї—З–∞–љ–Є—О void
 quick_sort(const BidirectionalIterator& first, const BidirectionalIterator& last) {
     std::quick_sort(first, last, std::less<>{});
 }
@@ -91,7 +91,7 @@ void sort(std::utf8string& str) {
 template<class BidirectionalIterator> constexpr
 std::enable_if_t<(std::is_class_v<BidirectionalIterator>  &&
                   std::is_any_of_v<typename BidirectionalIterator::pointer, char8_t*, const char8_t*>
-                 )>  // по умолчанию void
+                 )>  // –њ–Њ —Г–Љ–Њ–ї—З–∞–љ–Є—О void
 iquick_sort(const BidirectionalIterator& first, const BidirectionalIterator& last) {
     std::quick_sort(first, last, iless_ansi_8_chars());
 }
@@ -107,3 +107,4 @@ void isort(std::utf8string& str) {
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 } // namespace std
+

@@ -54,12 +54,12 @@
 #include <vector>
  
 #if __cplusplus >= 201103L
-//Zc:__cplusplus                  /std:c++14 (по умолчанию)       201402L
-//Zc:__cplusplus                  /std:c++14 (по умолчанию)       201402L
+//Zc:__cplusplus                  /std:c++14 (РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ)       201402L
+//Zc:__cplusplus                  /std:c++14 (РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ)       201402L
 //Zc:__cplusplus                  /std:c++17                      201703L
 //Zc:__cplusplus                  /std:c++latest                  201704L
-//Zc:__cplusplus- (отключено)     Любое значение                  199711L
-//Не указано                      Любое значение                  199711L
+//Zc:__cplusplus- (РѕС‚РєР»СЋС‡РµРЅРѕ)     Р›СЋР±РѕРµ Р·РЅР°С‡РµРЅРёРµ                  199711L
+//РќРµ СѓРєР°Р·Р°РЅРѕ                      Р›СЋР±РѕРµ Р·РЅР°С‡РµРЅРёРµ                  199711L
 #include <array>
 #include <atomic>
 //#include <chrono>
@@ -116,3 +116,4 @@
 //-------------------------------------------------
 
 #endif //#define STDC_H
+

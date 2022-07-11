@@ -1,15 +1,15 @@
 //
 //                  utf8string.hpp  -- Copyright (C) by Alexander Prilepsky 2022
 //
-// Этот заголовочный файл содержит класс  std::utf8string, класс back_insert_iterator<std::utf8string>
+// Р­С‚РѕС‚ Р·Р°РіРѕР»РѕРІРѕС‡РЅС‹Р№ С„Р°Р№Р» СЃРѕРґРµСЂР¶РёС‚ РєР»Р°СЃСЃ  std::utf8string, РєР»Р°СЃСЃ back_insert_iterator<std::utf8string>
 //
-// ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ "КАК ЕСТЬ", БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ,
-// ЯВНЫЕ ИЛИ ПОДРАЗУМЕВАЕМЫЕ, ВКЛЮЧАЯ, НО НЕ ОГРАНИЧИВАЯСЬ ГАРАНТИЯМИ
-// ТОВАРНАЯ ПРИГОДНОСТЬ, ПРИГОДНОСТЬ ДЛЯ ОПРЕДЕЛЕННОЙ ЦЕЛИ И ОТСУТСТВИЕ НАРУШЕНИЙ.
-// НИ В КОЕМ СЛУЧАЕ АВТОР НЕ НЕСЕТ ОТВЕТСТВЕННОСТИ ЗА КАКИЕ-ЛИБО ПРЕТЕНЗИИ, УБЫТКИ ИЛИ
-// ИНАЯ ОТВЕТСТВЕННОСТЬ, БУДЬ ТО В СИЛУ ДОГОВОРА, ДЕЛИКТА ИЛИ ИНЫМ ОБРАЗОМ,
-// ВЫТЕКАЮЩИЕ ИЗ, ИЛИ В СВЯЗИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ ИЛИ ИСПОЛЬЗОВАНИЕМ ИЛИ
-// ДРУГИЕ СДЕЛКИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ.
+// РџР РћР“Р РђРњРњРќРћР• РћР‘Р•РЎРџР•Р§Р•РќРР• РџР Р•Р”РћРЎРўРђР’Р›РЇР•РўРЎРЇ "РљРђРљ Р•РЎРўР¬", Р‘Р•Р— РљРђРљРРҐ-Р›РР‘Рћ Р“РђР РђРќРўРР™,
+// РЇР’РќР«Р• РР›Р РџРћР”Р РђР—РЈРњР•Р’РђР•РњР«Р•, Р’РљР›Р®Р§РђРЇ, РќРћ РќР• РћР“Р РђРќРР§РР’РђРЇРЎР¬ Р“РђР РђРќРўРРЇРњР
+// РўРћР’РђР РќРђРЇ РџР РР“РћР”РќРћРЎРўР¬, РџР РР“РћР”РќРћРЎРўР¬ Р”Р›РЇ РћРџР Р•Р”Р•Р›Р•РќРќРћР™ Р¦Р•Р›Р Р РћРўРЎРЈРўРЎРўР’РР• РќРђР РЈРЁР•РќРР™.
+// РќР Р’ РљРћР•Рњ РЎР›РЈР§РђР• РђР’РўРћР  РќР• РќР•РЎР•Рў РћРўР’Р•РўРЎРўР’Р•РќРќРћРЎРўР Р—Рђ РљРђРљРР•-Р›РР‘Рћ РџР Р•РўР•РќР—РР, РЈР‘Р«РўРљР РР›Р
+// РРќРђРЇ РћРўР’Р•РўРЎРўР’Р•РќРќРћРЎРўР¬, Р‘РЈР”Р¬ РўРћ Р’ РЎРР›РЈ Р”РћР“РћР’РћР Рђ, Р”Р•Р›РРљРўРђ РР›Р РРќР«Рњ РћР‘Р РђР—РћРњ,
+// Р’Р«РўР•РљРђР®Р©РР• РР—, РР›Р Р’ РЎР’РЇР—Р РЎ РџР РћР“Р РђРњРњРќР«Рњ РћР‘Р•РЎРџР•Р§Р•РќРР•Рњ РР›Р РРЎРџРћР›Р¬Р—РћР’РђРќРР•Рњ РР›Р
+// Р”Р РЈР“РР• РЎР”Р•Р›РљР РЎ РџР РћР“Р РђРњРњРќР«Рњ РћР‘Р•РЎРџР•Р§Р•РќРР•Рњ.
 //
 //                      c++ Visual Studio 2022 version 17.2
 //
@@ -21,20 +21,20 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace std {
-// Вообще не знаю, нужен ли этот u8char_traits, не придумал ничего интересного, так, ерунда всякая
-// проверял работу utf8string с ПУСТЫМ u8char_traits. Хотя его содержимое не должно повлиять на ut8string, 
-// потому, что нигде не использовал
+// Р’РѕРѕР±С‰Рµ РЅРµ Р·РЅР°СЋ, РЅСѓР¶РµРЅ Р»Рё СЌС‚РѕС‚ u8char_traits, РЅРµ РїСЂРёРґСѓРјР°Р» РЅРёС‡РµРіРѕ РёРЅС‚РµСЂРµСЃРЅРѕРіРѕ, С‚Р°Рє, РµСЂСѓРЅРґР° РІСЃСЏРєР°СЏ
+// РїСЂРѕРІРµСЂСЏР» СЂР°Р±РѕС‚Сѓ utf8string СЃ РџРЈРЎРўР«Рњ u8char_traits. РҐРѕС‚СЏ РµРіРѕ СЃРѕРґРµСЂР¶РёРјРѕРµ РЅРµ РґРѕР»Р¶РЅРѕ РїРѕРІР»РёСЏС‚СЊ РЅР° ut8string, 
+// РїРѕС‚РѕРјСѓ, С‡С‚Рѕ РЅРёРіРґРµ РЅРµ РёСЃРїРѕР»СЊР·РѕРІР°Р»
 struct u8char_traits : char_traits<char8_t> {
     using _Elem = char8_t;
     using Base_traits = char_traits<_Elem>;
 
-    // это уже есть в utf8string
+    // СЌС‚Рѕ СѓР¶Рµ РµСЃС‚СЊ РІ utf8string
     [[nodiscard]] static constexpr 
     size_t clamp_suffix_size(const size_t len, const size_t pos, const size_t count) noexcept {
         // trims count to the longest it can be assuming a string at/after pos
         return (std::min)(count, len - pos);
     }
-    // это уже есть в utf8string
+    // СЌС‚Рѕ СѓР¶Рµ РµСЃС‚СЊ РІ utf8string
     [[nodiscard]] static constexpr               // count in SYMBOLS
     auto retPosSize(const _Elem* const p, size_t count) noexcept {
         const size_t len = ::u8size(p);    // in symbols
@@ -110,11 +110,11 @@ struct u8char_traits : char_traits<char8_t> {
         return compare_two_utf8_symbols(left, right) < 0;
     }
 
-    using Base_traits::to_char_type;    // переделать ???????????????
+    using Base_traits::to_char_type;    // РїРµСЂРµРґРµР»Р°С‚СЊ ???????????????
     //_NODISCARD static constexpr _Elem to_char_type(const int_type& _Meta) noexcept {
     //    return static_cast<_Elem>(_Meta);
     //}
-    using Base_traits::to_int_type;     // переделать ????????????
+    using Base_traits::to_int_type;     // РїРµСЂРµРґРµР»Р°С‚СЊ ????????????
     //_NODISCARD static constexpr int_type to_int_type(const _Elem& _Ch) noexcept {
     //    return static_cast<unsigned char>(_Ch);
     //}
@@ -148,7 +148,7 @@ concept is_iterator_only_v = is_iterator_v<_Iter> && (!is_pointer_v<remove_cvref
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace std {
 
-//  Во избежание ошибок, в функциях utf8string лучше используйте итераторы utf8string вместо указателей
+//  Р’Рѕ РёР·Р±РµР¶Р°РЅРёРµ РѕС€РёР±РѕРє, РІ С„СѓРЅРєС†РёСЏС… utf8string Р»СѓС‡С€Рµ РёСЃРїРѕР»СЊР·СѓР№С‚Рµ РёС‚РµСЂР°С‚РѕСЂС‹ utf8string РІРјРµСЃС‚Рѕ СѓРєР°Р·Р°С‚РµР»РµР№
 //WARN("To avoid ERRORS,\n    it is better to use utf8string iterators INSTEAD of pointers in utf8string functions.\n");
 
 template<class Traits>
@@ -182,11 +182,11 @@ public:
     using typename Base::difference_type;//       = ptrdiff_t;   // in win32 == int32, in win64 == int64
 
     //  ----------------------------------  CONSTRUCT -----------------------------------------------------
-    using Base::Base;             // прокидывание конструкторов базового класса
+    using Base::Base;             // РїСЂРѕРєРёРґС‹РІР°РЅРёРµ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРѕРІ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР°
     using Base::npos;
 
 protected:
-    iterator* iterators_chain = nullptr;      // цепочка итераторов
+    iterator* iterators_chain = nullptr;      // С†РµРїРѕС‡РєР° РёС‚РµСЂР°С‚РѕСЂРѕРІ
 
 public:
     template<class _Iter>
@@ -200,7 +200,7 @@ public:
         enable_if_t<conjunction_v<is_convertible<const Tsview&, Base_view>,
                          negation<is_convertible<const Tsview&, const _Elem*>>>, int>;
     //---------------------------------------------------------------------------------------------
-    // конструкторы и операторы копирования и перемещения
+    // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹ Рё РѕРїРµСЂР°С‚РѕСЂС‹ РєРѕРїРёСЂРѕРІР°РЅРёСЏ Рё РїРµСЂРµРјРµС‰РµРЅРёСЏ
     constexpr20
     basic_utf8string(const it_ret& re) : Base(re.string8()) {}
     //---------------------------------------------------------------------------------------------
@@ -230,7 +230,7 @@ public:
     constexpr20                                      // pos in SYMBOLS
     basic_utf8string(const Base& right, const size_type pos)
                 : Base(right, retPosSize(right.data(), pos) ) {}
-    // Base_view через basic_utf8string
+    // Base_view С‡РµСЂРµР· basic_utf8string
           //--------------------------------------------------------------------------------------------------------
     template<class T> requires is_convertible_v<T, string_view>
     constexpr20                                                     // string, string_view
@@ -284,9 +284,9 @@ public:
     basic_utf8string (const T* const p, const size_type pos, const size_type count) : 
                                 Base(substr_wstring_to_utf8(p, pos, count)) {}
 //============================================================================================================
-    //                          ПУСТЬ ПОЛЬЗУЮТСЯ, ЕСЛИ ХОТЯТ  !!!!!!!!!!!!!!!!
+    //                          РџРЈРЎРўР¬ РџРћР›Р¬Р—РЈР®РўРЎРЇ, Р•РЎР›Р РҐРћРўРЇРў  !!!!!!!!!!!!!!!!
     constexpr20                                          // count in SYMBOLS!!!!!!!!!
-    basic_utf8string(const _Elem* const p, const size_type count)   // правильно ли установили ук-ль???
+    basic_utf8string(const _Elem* const p, const size_type count)   // РїСЂР°РІРёР»СЊРЅРѕ Р»Рё СѓСЃС‚Р°РЅРѕРІРёР»Рё СѓРє-Р»СЊ???
                 : Base(p, retPosSize(p, count) ) {
         // construct from p [p, p+count)
         /*static_assert(is_integral_v<Tsize> && !(is_integral_v<Tsize>), 
@@ -343,10 +343,10 @@ public:
     
     template<class Iter, class Type = typename Iter::value_type> 
     requires  is_iterator_v<Iter> && is_class_v<Iter> && (!is_char_v<Type>) && convertible_to_utf8<Type>
-    constexpr20   // итераторы контейнеров с char8_t*, char*, u8string, u8string_view, utf8string, string...
+    constexpr20   // РёС‚РµСЂР°С‚РѕСЂС‹ РєРѕРЅС‚РµР№РЅРµСЂРѕРІ СЃ char8_t*, char*, u8string, u8string_view, utf8string, string...
     basic_utf8string(Iter first, Iter last) {
         _Adl_verify_range(first, last);
-        //ASSERT(first <= last);       // у list нет операторов <, <=, >, >=
+        //ASSERT(first <= last);       // Сѓ list РЅРµС‚ РѕРїРµСЂР°С‚РѕСЂРѕРІ <, <=, >, >=
         //            Iter=std::_List_iterator<std::_List_val<std::_List_simple_types<const char8_t *>>>
         if constexpr(std::is_pointer_v<Type> || std::is_class_v<Type>) {
             for(; first != last; ++first) {
@@ -366,7 +366,7 @@ public:
     constexpr20
     basic_utf8string& operator=(basic_utf8string&& right) noexcept {
         if(this != std::addressof(right)) {
-            if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+            if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
             *((Base*)this) = std::move(*(Base*)(&right));
         }
         return *this;
@@ -380,7 +380,7 @@ public:
 
     constexpr20
     basic_utf8string& operator=(Base&& right) {
-         if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+         if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
          *((Base*)this) = std::move(right);
         return *this;
     }
@@ -399,18 +399,18 @@ public:
         }
     }
 
-    constexpr20                                                  // а то будет неоднозначность
+    constexpr20                                                  // Р° С‚Рѕ Р±СѓРґРµС‚ РЅРµРѕРґРЅРѕР·РЅР°С‡РЅРѕСЃС‚СЊ
     basic_utf8string& assign(initializer_list<_Elem> _Ilist) {   
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::assign(_Ilist);
 
         return *this;
     }
 
-    constexpr20                                                    // а то будет неоднозначность
+    constexpr20                                                    // Р° С‚Рѕ Р±СѓРґРµС‚ РЅРµРѕРґРЅРѕР·РЅР°С‡РЅРѕСЃС‚СЊ
     basic_utf8string& append(std::initializer_list<_Elem> _Ilist) {
         Base::append(_Ilist);
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         return *this;
     }
  
@@ -421,7 +421,7 @@ public:
         const difference_type pos = where.diff_ptr_in_symbols_;         // in symbols
         
         Base::insert(where.get_u8iterator(), _Ilist); 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         
         if(this->capacity() == save_capacity)  return where;
         return begin() + pos;                 // O(n)
@@ -435,7 +435,7 @@ public:
         Base::replace(static_cast<size_type>(first.rc_ptr() - this->data()),      // off
                                static_cast<size_type>(diff_ptr(first, last)),     // count
                                std::data(il), std::size(il));
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         return *this;
     }
     //========================================================================================================
@@ -443,7 +443,7 @@ public:
     basic_utf8string& operator=(const basic_utf8string& right) {
         if(this != std::addressof(right)) {
             *((Base*)this) = *(Base*)(&right);
-            if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+            if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         }
         return *this;
     }
@@ -451,14 +451,14 @@ public:
     template<class Tsview, Is_string_view<Tsview> = 0>        // u8string, u8string_view, il<_Elem>
     constexpr20
     basic_utf8string& operator=(const Tsview& right) {
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::operator=(right);
         return *this;
     }
 
     constexpr20
     basic_utf8string& operator=(const _Elem* const p) {
-         if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+         if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
          *((Base*)this) = p;
         return *this;
     }
@@ -476,7 +476,7 @@ public:
     
     constexpr20
     basic_utf8string& operator=(const _Elem ch) {
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         (*((Base*)this)) = ch;
         return *this;
     }
@@ -562,7 +562,7 @@ public:
     operator  std::wstring()        const noexcept { 
         return wstring(); 
     }
-    //                                      размер std::string строки (в символах)
+    //                                      СЂР°Р·РјРµСЂ std::string СЃС‚СЂРѕРєРё (РІ СЃРёРјРІРѕР»Р°С…)
     [[nodiscard]] constexpr 
     size_type u8size()              const noexcept { return ::u8size(this->data()); }
 
@@ -615,7 +615,7 @@ public:
     //////////////////////////////////////  APPEND     ////////////////////////////////////////////////////
     constexpr20
     basic_utf8string& append(const basic_utf8string& s) {
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::append(*(Base*)(&s));
         return *this;
     }
@@ -625,7 +625,7 @@ public:
         // append right [pos, pos + count)
         tie(pos, count) = retPosSize(right.data(), pos, count);
         
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::append(*(Base*)(&right), pos, count);
         return *this;
     }
@@ -633,7 +633,7 @@ public:
     template<class Tsview, Is_string_view<Tsview> = 0>
     constexpr20
     basic_utf8string& append(const Tsview& right) {    // u8string, u8string_view
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::append(right);
         return *this;
     }
@@ -644,7 +644,7 @@ public:
         // append right [pos, pos + count)
         tie(pos, count) = retPosSize(right.data(), pos, count);
         
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::append(right, pos, count);
         return *this;
     }
@@ -654,7 +654,7 @@ public:
     basic_utf8string& append(const T* const p, const size_type count) {    
         // append [p, p + count)
         if constexpr(is_same_v<T, char8_t>) {
-            if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+            if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
             Base::append(p, retPosSize(p, count));
             return *this;
         }
@@ -665,7 +665,7 @@ public:
     constexpr20
     basic_utf8string& append(const T* const p) {  // append [p, <null>)
         if constexpr(is_same_v<T, char8_t>) {
-            if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+            if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
             Base::append(p);
             return *this;
         }
@@ -677,7 +677,7 @@ public:
     basic_utf8string& append(const size_type count, const T ch) {
         // append count * ch
         if constexpr(is_same_v<T, char8_t>) {
-            if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+            if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
             Base::append(count, ch);
             return *this;
         }
@@ -689,7 +689,7 @@ public:
     constexpr20
     basic_utf8string& append(const T c) {
         if constexpr(is_same_v<T, char8_t>) {
-            if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+            if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
             Base::append(1, c);
             return *this;
         }
@@ -701,7 +701,7 @@ public:
     basic_utf8string& append(const const_iterator& first, const const_iterator& last) {
         // append [first, last), input iterators
         _Adl_verify_range(first, last);
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::append(first.rc_ptr(), static_cast<size_type>(diff_ptr(first, last)));
         return *this;
     }
@@ -732,14 +732,14 @@ public:
 
     constexpr20
     basic_utf8string& append(const const_iterator& first) {
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::append(first.rc_ptr());
         return *this;
     }
     
     constexpr20                              // count in SYMBOLS
     basic_utf8string& append(const const_iterator& it, const size_type count) {    
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::append(it.rc_ptr(), retPosSize(it.rc_ptr(), count));
         return *this;
     }
@@ -752,7 +752,7 @@ public:
         static_assert((!same_as<typename _Iter::value_type, _Elem>), 
         "\n                             USE utf8string::iterator's INSTEAD OF (u8string,u8string_view)::iterator's");
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::append(basic_utf8string(it, it+count));
         return *this;
     }
@@ -768,7 +768,7 @@ public:
         // assign right [pos, pos + count)
         tie(pos, count) = retPosSize(right.data(), pos, count);
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::assign(*(Base*)(&right), pos, count);
         return *this;
     }
@@ -776,15 +776,15 @@ public:
     template<class Tsview, Is_string_view<Tsview> = 0>
     constexpr20
     basic_utf8string& assign(const Tsview& right) {    // u8string, u8string_view
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::assign(right);
         return *this;
     }
 
     constexpr20 
     basic_utf8string& assign(Base&& s) noexcept {
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
-        Base::assign(std::move(s));               // определен конструктор move
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
+        Base::assign(std::move(s));               // РѕРїСЂРµРґРµР»РµРЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ move
         return *this;
     }
 
@@ -794,7 +794,7 @@ public:
         // assign right [pos, pos + count)
         tie(pos, count) = retPosSize(right.data(), pos, count);
         
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::assign(right, pos, count);
         return *this;
     }
@@ -802,7 +802,7 @@ public:
     constexpr20                                  // count in symbols
     basic_utf8string& assign(const _Elem* const ptr, const size_type count) {
         // assign [ptr, ptr + count)
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::assign(ptr, retPosSize(ptr, count));
         return *this;
     }
@@ -816,7 +816,7 @@ public:
 
     constexpr20 
     basic_utf8string& assign(const _Elem* const ptr) {
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::assign(ptr);
         return *this;
     } 
@@ -832,7 +832,7 @@ public:
     basic_utf8string& assign(const _Elem* const ptr, size_type pos, size_type count) {
         tie(pos, count) = retPosSize(ptr, pos, count);
         
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::assign(ptr + pos, count);
         return *this;
     }
@@ -846,7 +846,7 @@ public:
 
     constexpr20 
     basic_utf8string& assign(const size_type count, const char8_t ch) {
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::assign(count, ch);
         return *this;
     }
@@ -861,7 +861,7 @@ public:
     basic_utf8string& assign(const const_iterator& first, const const_iterator& last) {
         _Adl_verify_range(first, last);
         
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::assign(first.rc_ptr(), static_cast<size_type>(diff_ptr(first, last)));
         return *this;
     }
@@ -910,7 +910,7 @@ public:
         // insert right at pos
         pos = retPosSize(pos);     // from SYMBOLS to in BYTES
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
 
         if constexpr(is_any_of_v<T, Base_view, Base>)
             Base::insert(pos, right);
@@ -931,7 +931,7 @@ public:
         // insert right [rpos, rpos + count) at pos
         tie(pos, rpos, count) = retPosSize(pos, std::data(right), rpos, count);
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
 
         if constexpr(is_any_of_v<T, Base_view, Base>) {
             Base::insert(pos, right, rpos, count);
@@ -968,7 +968,7 @@ public:
     constexpr20 
     basic_utf8string& insert(const size_type pos, const _Elem* p, const size_type count) {
         // insert [p, p + count) at pos
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::insert(retPosSize(pos), p, retPosSize(p, count));
         return *this;
     }
@@ -978,7 +978,7 @@ public:
     basic_utf8string& insert(const size_type pos, const size_type count, const T ch) {
         // insert count * ch at pos
         if constexpr(is_same_v<T, char8_t>) {
-            if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+            if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
             Base::insert(retPosSize(pos), count, ch);
             return *this;
         }
@@ -995,7 +995,7 @@ public:
             const auto save_capacity  = this->capacity();
             const difference_type pos = where.diff_ptr_in_symbols_;      // in symbols
 
-            if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+            if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
             Base::insert(where.get_u8iterator(), ch); 
 
             if(this->capacity() == save_capacity) return where;
@@ -1016,7 +1016,7 @@ public:
             const auto save_capacity  = this->capacity();
             const difference_type pos = where.diff_ptr_in_symbols_;      // in symbols
 
-            if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+            if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
             Base::insert(where.get_u8iterator(), count, ch); 
 
             if(this->capacity() == save_capacity) return where;
@@ -1038,7 +1038,7 @@ public:
         const auto off            = static_cast<size_type>(where.rc_ptr() - this->data());      // in bytes
         const difference_type pos = where.diff_ptr_in_symbols_;                                 // in symbols
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::insert(off, first.rc_ptr(), static_cast<size_type>(diff_ptr(first, last))); 
         
         if(this->capacity() == save_capacity) return where;
@@ -1064,7 +1064,7 @@ public:
         if(this->capacity() == save_capacity) return where;
         return begin() + pos;         // O(n)
     }
-    // -                        вст. 1-го символа, заданного итератором2,  в позицию, заданную итераторм1.
+    // -                        РІСЃС‚. 1-РіРѕ СЃРёРјРІРѕР»Р°, Р·Р°РґР°РЅРЅРѕРіРѕ РёС‚РµСЂР°С‚РѕСЂРѕРј2,  РІ РїРѕР·РёС†РёСЋ, Р·Р°РґР°РЅРЅСѓСЋ РёС‚РµСЂР°С‚РѕСЂРј1.
     constexpr
     iterator insert(const const_iterator& where, const const_iterator& other) {
         return this->insert(where, other, other+1);   
@@ -1075,7 +1075,7 @@ public:
         return this->insert(where, str.cbegin(), str.cend()); 
     }
     /////////////////////////////////////   ERASE   ///////////////////////////////////////////////////////
-    // при erase выполняется move symbols
+    // РїСЂРё erase РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ move symbols
 private:
     [[nodiscard]] constexpr                              //  from in symbols to in bytes
     auto retPosSize(size_type pos1, size_type count1, const _Elem* const p, 
@@ -1088,9 +1088,9 @@ private:
 public:
     constexpr20        // pos in symbols
     basic_utf8string& erase(const size_type pos = 0)  { // erase elements [pos, ...)
-        if(pos >= u8size()) return *this;   // предотвратить выход за предел строки
+        if(pos >= u8size()) return *this;   // РїСЂРµРґРѕС‚РІСЂР°С‚РёС‚СЊ РІС‹С…РѕРґ Р·Р° РїСЂРµРґРµР» СЃС‚СЂРѕРєРё
         
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::erase(retPosSize(pos));
         return *this;
     }
@@ -1099,7 +1099,7 @@ public:
     basic_utf8string& erase(size_type pos, size_type count) { // erase elements [pos, count)
         tie(pos, count) = retPosSize(this->data(), pos, count);  // from in symbols to in bytes
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::erase(pos, count);
         return *this;
     }
@@ -1107,7 +1107,7 @@ public:
     constexpr                                                    //   erase 1 element
     iterator erase(const iterator& where) {
         where._Compat(this->data());                 // where is in this string
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::erase(static_cast<size_type>(where.rc_ptr() - this->data()),        // off
                             utf8len(where.rc_ptr()));                                      // count
         return where;
@@ -1118,7 +1118,7 @@ public:
         first._Compat(this->data());                 // first is in this string
         _Adl_verify_range(first, last);             // first and last owned the same line
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::erase(static_cast<size_type>(first.rc_ptr() - this->data()),             // off
                              static_cast<size_type>(diff_ptr(first, last)));                    // count
         return first;
@@ -1129,7 +1129,7 @@ public:
         // replace [pos, pos + count) with right
         tie(pos, count) = retPosSize(this->data(), pos, count);
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::replace(pos, count, *(Base*)(&right));
         return *this;
     }
@@ -1140,7 +1140,7 @@ public:
         // replace [pos, pos + count) with right [rpos, rpos + rcount)
         tie(pos, count, rpos, rcount) = retPosSize(pos, count, right.data(), rpos, rcount);
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::replace(pos, count, right.data() + rpos, rcount);
         return *this;
     }
@@ -1151,7 +1151,7 @@ public:
         // replace [pos, pos + count) with right
         tie(pos, count) = retPosSize(this->data(), pos, count);
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::replace(pos, count, right);
         return *this;
     }
@@ -1163,7 +1163,7 @@ public:
         // replace [pos, pos + count) with right [rpos, rpos + count)
         tie(pos, count, rpos, rcount) = retPosSize(pos, count, std::data(right), rpos, rcount);
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::replace(pos, count, std::data(right) + rpos, rcount);
         return *this;
     }
@@ -1173,7 +1173,7 @@ public:
         // replace [pos, pos + count) with [p, p + rcount)
         tie(pos, count) = retPosSize(this->data(), pos, count);
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::replace(pos, count, p, retPosSize(p, rcount));
         return *this;
     }
@@ -1183,7 +1183,7 @@ public:
         // replace [pos, pos + count) with [p, <null>)
         tie(pos, count) = retPosSize(this->data(), pos, count);
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::replace(pos, count, p);
         return *this;
     }
@@ -1195,7 +1195,7 @@ public:
         if constexpr(is_same_v<T, char8_t>) {
             tie(pos, count) = retPosSize(this->data(), pos, count);
             
-            if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+            if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
             Base::replace(pos, count, rcount, ch);
             return *this;  
         }
@@ -1215,9 +1215,9 @@ private:
     constexpr void _Verify_ptr() const noexcept {
 #endif // _ITERATOR_DEBUG_LEVEL >= 1
     }
-protected:     // используются в классе итераторов( used in class Iterator8 )
-    //                                                          когда известны длины СИМВОЛОВ !!!!
-    constexpr20                 // size_where and size_pntr в БАЙТАХ!!!!
+protected:     // РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ РІ РєР»Р°СЃСЃРµ РёС‚РµСЂР°С‚РѕСЂРѕРІ( used in class Iterator8 )
+    //                                                          РєРѕРіРґР° РёР·РІРµСЃС‚РЅС‹ РґР»РёРЅС‹ РЎРРњР’РћР›РћР’ !!!!
+    constexpr20                 // size_where and size_pntr РІ Р‘РђР™РўРђРҐ!!!!
     basic_utf8string& replace(const _Elem* const where, const size_type size_where, const _Elem* const pntr, 
                                                         const size_type size_pntr) { 
         if(size_where == size_pntr) 
@@ -1226,7 +1226,7 @@ protected:     // используются в классе итераторов( used in class Iterator8 )
             Base::replace(where - this->data(), size_where, pntr, size_pntr);
         return *this;
     }
-    //              замена одного символа  символом , на который указывает указатель
+    //              Р·Р°РјРµРЅР° РѕРґРЅРѕРіРѕ СЃРёРјРІРѕР»Р°  СЃРёРјРІРѕР»РѕРј , РЅР° РєРѕС‚РѕСЂС‹Р№ СѓРєР°Р·С‹РІР°РµС‚ СѓРєР°Р·Р°С‚РµР»СЊ
     constexpr20                     // Oh there may be mistakes, so we will do private.
     basic_utf8string& replace(const _Elem* const where, const _Elem* const pntr) { 
         return this->replace(where, len8(*where), pntr, len8(*pntr));
@@ -1241,7 +1241,7 @@ public:
         first._Compat(this->data());
         _Adl_verify_range(first, last);
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::replace(static_cast<size_type>(first.rc_ptr() - this->data()),  // off
                                static_cast<size_type>(diff_ptr(first, last)),        // count
                                right.data());
@@ -1257,7 +1257,7 @@ public:
 
         count    = retPosSize(p, count);
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::replace(static_cast<size_type>(first.rc_ptr() - this->data()),      // off in bytes
                                static_cast<size_type>(diff_ptr(first, last)),     // count in bytes
                                  p, count);
@@ -1271,7 +1271,7 @@ public:
         first._Compat(this->data());
         _Adl_verify_range(first, last);
 
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::replace(static_cast<size_type>(first.rc_ptr() - this->data()),      // off in bytes
                                static_cast<size_type>(diff_ptr(first, last)),     // count in bytes
                                  p);
@@ -1287,7 +1287,7 @@ public:
         _Adl_verify_range(first, last);
 
         if constexpr(is_same_v<T, char8_t>) {
-            if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+            if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
             Base::replace(static_cast<size_type>(first.rc_ptr() - this->data()),      // off in bytes
                                static_cast<size_type>(diff_ptr(first, last)),     // count in bytes
                                count, ch);
@@ -1316,17 +1316,17 @@ public:
        _Adl_verify_range(first, last);
        _Adl_verify_range(j1, j2);
        
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
         Base::replace(static_cast<size_type>(first.rc_ptr() - this->data()),      // off in bytes
                                static_cast<size_type>(diff_ptr(first, last)),     // count in bytes
                                  j1.rc_ptr(), static_cast<size_type>(diff_ptr(j1, j2)));
     }
     //------------------------------------------------------------------------------------------------
-    //                      - замена символа, заданного итератором 1, символом, заданным итератором 2.
+    //                      - Р·Р°РјРµРЅР° СЃРёРјРІРѕР»Р°, Р·Р°РґР°РЅРЅРѕРіРѕ РёС‚РµСЂР°С‚РѕСЂРѕРј 1, СЃРёРјРІРѕР»РѕРј, Р·Р°РґР°РЅРЅС‹Рј РёС‚РµСЂР°С‚РѕСЂРѕРј 2.
     constexpr20
     basic_utf8string& replace(const const_iterator& i1, const const_iterator& i2) {
         i1._Compat(this->data());
-        // i2 может быть совсем от другой строки, поэтому проверить нет возможности
+        // i2 РјРѕР¶РµС‚ Р±С‹С‚СЊ СЃРѕРІСЃРµРј РѕС‚ РґСЂСѓРіРѕР№ СЃС‚СЂРѕРєРё, РїРѕСЌС‚РѕРјСѓ РїСЂРѕРІРµСЂРёС‚СЊ РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё
         return this->replace(i1.rc_ptr(), i2.rc_ptr());
     }
 
@@ -1410,7 +1410,7 @@ public:
         ASSERTM(_Old_size != 0, "invalid to pop_back empty string");
 #endif // _ITERATOR_DEBUG_LEVEL >= 1
         Base::resize(_Old_size - u8_distance(this->data() + this->size(), -1));
-        if(iterators_chain) iterators_chain = nullptr; // все итераторы к этому объекту становятся недействительными !!!
+        if(iterators_chain) iterators_chain = nullptr; // РІСЃРµ РёС‚РµСЂР°С‚РѕСЂС‹ Рє СЌС‚РѕРјСѓ РѕР±СЉРµРєС‚Сѓ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹РјРё !!!
     }
 
     [[nodiscard]] constexpr20
@@ -1566,7 +1566,7 @@ public:
         return cnv_pos_byte_sym(data(), Base::rfind(ch, pos));      // from size in BYTES to size in SYMBOLS
     }
     //---------------------------------------------------------------------------------
-    // u8string::find_first_of не ищет символы, размером больше 1-го байта !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // u8string::find_first_of РЅРµ РёС‰РµС‚ СЃРёРјРІРѕР»С‹, СЂР°Р·РјРµСЂРѕРј Р±РѕР»СЊС€Рµ 1-РіРѕ Р±Р°Р№С‚Р° !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //------------------------------------------------------------------------------------------
     template<class Tsview, Is_string_view<Tsview> = 0>    // u8string_view, u8string, utf8string
@@ -1860,13 +1860,13 @@ public:
         tie(pos, count) = retPosSize(this->data(), pos, count);
         return Base::compare(pos, count, ptr, retPosSize(ptr, count2));
     }
-    // сравнение 2-х символов
+    // СЃСЂР°РІРЅРµРЅРёРµ 2-С… СЃРёРјРІРѕР»РѕРІ
     [[nodiscard]] constexpr                                 // pos in SYMBOLS
     int compare_one_symbol(const _Elem* const ptr, const size_type pos=0) const {
         // compare [pos, pos + 1) with [ptr, ptr + 1)     in SYMBOLS
         return compare_two_utf8_symbols(this->data(), ptr + retPosSize(ptr, pos));
     }
-    //                                  - срав. с C строкой.
+    //                                  - СЃСЂР°РІ. СЃ C СЃС‚СЂРѕРєРѕР№.
     [[nodiscard]] constexpr      // pos1, count1 in SYMBOLS
     int compare(const size_type pos1, const size_type count1, const std::string_view str, const size_type count2) const {
         // compare [pos1, pos1 + count1) with str [0, count2]
@@ -1874,7 +1874,7 @@ public:
     }
     
     //////////////////////////////////////  END COMPARE  ////////////////////////////////////////////////
-    ////////////////////          Сравнение без учета регистра             ////////////////////////////////////
+    ////////////////////          РЎСЂР°РІРЅРµРЅРёРµ Р±РµР· СѓС‡РµС‚Р° СЂРµРіРёСЃС‚СЂР°             ////////////////////////////////////
     [[nodiscard]] constexpr 
     int icompare(const basic_utf8string& s2) const noexcept {
          return utf8_tolower_ansi(*this).compare(utf8_tolower_ansi(s2));
@@ -1955,10 +1955,10 @@ public:
     constexpr back_insert_iterator& operator++() noexcept  {
         return *this;
     }
-    constexpr back_insert_iterator& operator--() noexcept  {   // может пригодиться
-        return *this;                                                            // для move_backward
-    }                                                                            // dest как back_inserter
-                                                                                 // тогда получается в обратном порядке
+    constexpr back_insert_iterator& operator--() noexcept  {   // РјРѕР¶РµС‚ РїСЂРёРіРѕРґРёС‚СЊСЃСЏ
+        return *this;                                                            // РґР»СЏ move_backward
+    }                                                                            // dest РєР°Рє back_inserter
+                                                                                 // С‚РѕРіРґР° РїРѕР»СѓС‡Р°РµС‚СЃСЏ РІ РѕР±СЂР°С‚РЅРѕРј РїРѕСЂСЏРґРєРµ
     constexpr back_insert_iterator operator++(int) noexcept {
         return *this;
     }
@@ -1985,7 +1985,7 @@ template<class T>
 inline constexpr bool is_iter8_v = std::is_iterator_v<T> &&
                                    std::is_any_of_v<T, utf8string::iterator, utf8string::const_iterator>;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                          вывод
+//                                          РІС‹РІРѕРґ
 inline std::basic_ostream<char>& operator << (std::basic_ostream<char>& os, const utf8string& s8) {
         return os << s8.string();
 }
@@ -2054,13 +2054,14 @@ void u8_advance(std::iter8& it, const ptrdiff_t pos) noexcept {
      it += pos;
 } 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                      конвертирует строку в число, в случае ошибки возвращает 0
+//                      РєРѕРЅРІРµСЂС‚РёСЂСѓРµС‚ СЃС‚СЂРѕРєСѓ РІ С‡РёСЃР»Рѕ, РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё РІРѕР·РІСЂР°С‰Р°РµС‚ 0
 template<class T=int> 
 [[nodiscard]] constexpr
 T NumFromString(const std::utf8string& str) {
     T res{};
     std::from_chars((const char*)str.data(), (const char*)(str.data() + str.size()), res);
-    return res;       // 0 при ошибке
+    return res;       // 0 РїСЂРё РѕС€РёР±РєРµ
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #endif // _utf8string_hpp_
+

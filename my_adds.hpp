@@ -1,6 +1,6 @@
-//                                        Кодировка WIN  !!!!!!!!!!!!!
-//                                        Кодировка WIN  !!!!!!!!!!!!!
-//                                        Кодировка WIN  !!!!!!!!!!!!!
+//                                        РљРѕРґРёСЂРѕРІРєР° WIN  !!!!!!!!!!!!!
+//                                        РљРѕРґРёСЂРѕРІРєР° WIN  !!!!!!!!!!!!!
+//                                        РљРѕРґРёСЂРѕРІРєР° WIN  !!!!!!!!!!!!!
 #pragma once
 
 #include "ansi_tabs.hpp"
@@ -243,7 +243,7 @@ using common_diff_t = common_type_t<_Iter_diff_t<_Iters>...>;
 template <class _Ty>
 concept has_data_function = requires (_Ty __a) { std::data(__a);  };
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                              есть ли в контейнере ф-я член begin
+//                              РµСЃС‚СЊ Р»Рё РІ РєРѕРЅС‚РµР№РЅРµСЂРµ С„-СЏ С‡Р»РµРЅ begin
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<class T>
 concept has_member_begin = std::has_type_iterator<T> && requires(const T& __t) {
@@ -251,7 +251,7 @@ concept has_member_begin = std::has_type_iterator<T> && requires(const T& __t) {
 };
 #define has_begin_member_v has_member_begin
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                              есть ли в контейнере ф-я член sort : сортировка
+//                              РµСЃС‚СЊ Р»Рё РІ РєРѕРЅС‚РµР№РЅРµСЂРµ С„-СЏ С‡Р»РµРЅ sort : СЃРѕСЂС‚РёСЂРѕРІРєР°
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<class T>
 concept has_member_sort = requires(const T& __t) {
@@ -259,7 +259,7 @@ concept has_member_sort = requires(const T& __t) {
 };
 #define has_sort_member_v has_member_sort
 //------------------------------------------------------------------------------
-//                  Дополненик к линейке data(...) в xutility
+//                  Р”РѕРїРѕР»РЅРµРЅРёРє Рє Р»РёРЅРµР№РєРµ data(...) РІ xutility
 template<class T>  requires std::is_pointer_v<T> && std::is_char_v<std::remove_pointer_t<T>>
 [[nodiscard]] constexpr auto data(const T& ptr) noexcept {
     return std::remove_reference_t<decltype(ptr)>(ptr);
@@ -274,17 +274,17 @@ template<class T>  requires std::is_pointer_v<T> && std::is_char_v<std::remove_p
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 inline void set_ust() {
     setlocale(LC_ALL, "ru");
-    //синхронизация с буферами C. Поэтому, если в начале кода написать 
+    //СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ СЃ Р±СѓС„РµСЂР°РјРё C. РџРѕСЌС‚РѕРјСѓ, РµСЃР»Рё РІ РЅР°С‡Р°Р»Рµ РєРѕРґР° РЅР°РїРёСЃР°С‚СЊ 
     std::ios::sync_with_stdio(false);
     cout.setf(std::ios_base::boolalpha); 
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////          Конвертация string to wstring              //////////////////////////////////
+//////////////////////          РљРѕРЅРІРµСЂС‚Р°С†РёСЏ string to wstring              //////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 inline
 std::wstring string_to_wstring_l(const std::string_view str, const _locale_t lc) {
   std::wstring result;
-  // а если передали lc == nullptr ?
+  // Р° РµСЃР»Рё РїРµСЂРµРґР°Р»Рё lc == nullptr ?
   if(str.empty() || lc == nullptr) return result;
   size_t n(0);
   if(_mbstowcs_s_l(&n, NULL, 0, (const char*)str.data(), 0, lc) == 0 && n > 0) {
@@ -296,7 +296,7 @@ std::wstring string_to_wstring_l(const std::string_view str, const _locale_t lc)
   return result;
 }
 //==============================================================================================================
-// для кодовой страница cp1251
+// РґР»СЏ РєРѕРґРѕРІРѕР№ СЃС‚СЂР°РЅРёС†Р° cp1251
 std::wstring string_to_wstring_ansi_o(const std::string_view str) {
   std::wstring result;
   if(str.empty()) return result;
@@ -311,7 +311,7 @@ std::wstring string_to_wstring_ansi_o(const std::string_view str) {
   return result;
 }
 //------------------------------------------------------------------
-// эта немного шустрее, чем предыдущая, хотя предыдущая тоже неплоха 
+// СЌС‚Р° РЅРµРјРЅРѕРіРѕ С€СѓСЃС‚СЂРµРµ, С‡РµРј РїСЂРµРґС‹РґСѓС‰Р°СЏ, С…РѕС‚СЏ РїСЂРµРґС‹РґСѓС‰Р°СЏ С‚РѕР¶Рµ РЅРµРїР»РѕС…Р° 
 [[nodiscard]] inline ///constexpr
 std::wstring string_to_wstring_ansi_d(const std::string_view str) {
   std::wstring dst(str.size(), '\0');
@@ -334,7 +334,7 @@ std::wstring string_to_wstring(const std::string_view str, [[maybe_unused]] cons
     return lc? string_to_wstring_l(str, lc) : string_to_wstring_ansi(str);
 }
 //==============================================================================================================
-/// медленная    оставил для предыдущих-последующих    //loc_cur для ДОС кодировки пр-мы
+/// РјРµРґР»РµРЅРЅР°СЏ    РѕСЃС‚Р°РІРёР» РґР»СЏ РїСЂРµРґС‹РґСѓС‰РёС…-РїРѕСЃР»РµРґСѓСЋС‰РёС…    //loc_cur РґР»СЏ Р”РћРЎ РєРѕРґРёСЂРѕРІРєРё РїСЂ-РјС‹
 template<class Tstring=std::wstring> 
 [[nodiscard]] inline
 Tstring string_to_wstring(std::basic_string_view<char> str, const std::locale& loc) {// = loc_glob) {
@@ -343,7 +343,7 @@ Tstring string_to_wstring(std::basic_string_view<char> str, const std::locale& l
    return wbuf;
 } 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////          Конвертация wstring to string              //////////////////////////////////
+//////////////////////          РљРѕРЅРІРµСЂС‚Р°С†РёСЏ wstring to string              //////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 [[nodiscard]] inline
 std::string wstring_to_string_l(const std::wstring_view str, const _locale_t lc) {
@@ -360,7 +360,7 @@ std::string wstring_to_string_l(const std::wstring_view str, const _locale_t lc)
   return result;
 }
 //=============================================================================================================
-// для кодовой страницы cp1251
+// РґР»СЏ РєРѕРґРѕРІРѕР№ СЃС‚СЂР°РЅРёС†С‹ cp1251
 std::string wstring_to_string_ansi_o(const std::wstring_view str) {
   std::string result;
   if(str.empty()) return result;
@@ -374,7 +374,7 @@ std::string wstring_to_string_ansi_o(const std::wstring_view str) {
   }
   return result;
 }
-// эта немного шустрее, чем предыдущая, хотя предыдущая тоже неплоха 
+// СЌС‚Р° РЅРµРјРЅРѕРіРѕ С€СѓСЃС‚СЂРµРµ, С‡РµРј РїСЂРµРґС‹РґСѓС‰Р°СЏ, С…РѕС‚СЏ РїСЂРµРґС‹РґСѓС‰Р°СЏ С‚РѕР¶Рµ РЅРµРїР»РѕС…Р° 
 [[nodiscard]] inline ///constexpr
 std::string wstring_to_string_ansi_d(const std::wstring_view src) {
   std::string dst(src.size(), '\0');
@@ -391,3 +391,4 @@ std::string wstring_to_string(const std::wstring_view str, [[maybe_unused]] cons
    return lc? wstring_to_string_l(str, lc) : wstring_to_string_ansi(str);
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+

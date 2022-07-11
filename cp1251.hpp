@@ -4,7 +4,7 @@ union _SOME { uint32_t ui=0; unsigned char uc[4]; };
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                   char -> wchar_t
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//     òàáëèöà wchar_t
+//     Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ð° wchar_t
 inline constexpr 
 const unsigned cp1251_2uni[128] = {            // char->wchar_t  (mb -> wc)
   /* 0x80 */
@@ -32,7 +32,7 @@ constexpr void cp1251_mbtowc(unsigned* pwc, const unsigned char c) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                wchar_t  =>  char
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// òàáëèöû  ANSI êîäîâ                                          // wc => mb  (wchar_t -> char)
+// Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹  ANSI ÐºÐ¾Ð´Ð¾Ð²                                          // wc => mb  (wchar_t -> char)
 inline constexpr 
 const unsigned char cp1251_page04[] = {   // 9*16+2=146         //  wc >= 0x0400 && wc < 0x0498
   0x00, 0xa8, 0x80, 0x81, 0xaa, 0xbd, 0xb2, 0xaf, 0xa3, 0x8a, 0x8c, 0x8e, 0x8d, 0x00, 0xa1, 0x8f,
@@ -66,10 +66,10 @@ int cp1251_wctomb(unsigned char* const r, const unsigned wc) {
 
   if(wc0 == 0x00) c = wc1;
   else
-  if(wc0 == 0x04) c = cp1251_page04[ wc1 ] ;  // 146 = äëèíà cp1251_page04
+  if(wc0 == 0x04) c = cp1251_page04[ wc1 ] ;  // 146 = Ð´Ð»Ð¸Ð½Ð° cp1251_page04
   else 
   if(wc0 == 0x20) {
-    if(wc != 0x20ac) c = cp1251_page20[ wc1 ]; // 3b = 59 = äëèíà cp1251_page20                 //-0x10 ];
+    if(wc != 0x20ac) c = cp1251_page20[ wc1 ]; // 3b = 59 = Ð´Ð»Ð¸Ð½Ð° cp1251_page20                 //-0x10 ];
     else c = 0x88;
   }
   else
@@ -132,8 +132,8 @@ inline constexpr unsigned cp1251_2utf8[] = {            // char->char8_t  (mb ->
   0x00d188, 0x00d189, 0x00d18a, 0x00d18b, 0x00d18c, 0x00d18d, 0x00d18e, 0x00d18f
 };
 //-------------------------------------------------------------------------------------------------------------          
-//                          òàáëèöà cp1251  utf8 ñèìâîëîâ
-//                                      Äëÿ char -> char8_t (u8string, utf8string)
+//                          Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ð° cp1251  utf8 ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð²
+//                                      Ð”Ð»Ñ char -> char8_t (u8string, utf8string)
 //#pragma clang diagnostic push 
 //#pragma clang diagnostic ignored "-Winvalid-source-encoding"
 
@@ -141,7 +141,7 @@ inline constexpr
 const char8_t* const table_utf8 = 
 u8"\0\1\2\3\4\5\6\7\x8\x9\xa\xb\xc\xd\xe\xf\x10"
 u8"\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
-//u8"€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ";
+//u8"Ð‚Ðƒâ€šÑ“â€žâ€¦â€ â€¡â‚¬â€°Ð‰â€¹ÐŠÐŒÐ‹ÐÑ’â€˜â€™â€œâ€â€¢â€“â€”Â˜â„¢Ñ™â€ºÑšÑœÑ›ÑŸÂ ÐŽÑžÐˆÂ¤ÒÂ¦Â§ÐÂ©Ð„Â«Â¬Â­Â®Ð‡Â°Â±Ð†Ñ–Ò‘ÂµÂ¶Â·Ñ‘â„–Ñ”Â»Ñ˜Ð…Ñ•Ñ—ÐÐ‘Ð’Ð“Ð”Ð•Ð–Ð—Ð˜Ð™ÐšÐ›ÐœÐÐžÐŸÐ Ð¡Ð¢Ð£Ð¤Ð¥Ð¦Ð§Ð¨Ð©ÐªÐ«Ð¬Ð­Ð®Ð¯Ð°Ð±Ð²Ð³Ð´ÐµÐ¶Ð·Ð¸Ð¹ÐºÐ»Ð¼Ð½Ð¾Ð¿Ñ€ÑÑ‚ÑƒÑ„Ñ…Ñ†Ñ‡ÑˆÑ‰ÑŠÑ‹ÑŒÑÑŽÑ";
 u8"\xd0\x82"  
 u8"\xd0\x83"  
 u8"\xe2\x80\x9a"
@@ -272,7 +272,7 @@ u8"\xd1\x8e"
 u8"\xd1\x8f";
 
 //#pragma clang diagnostic pop 
-//                          òàáëèöà äëèí è ñìåùåíèé â òàáëèöå cp1251 utf8 ñèìâîëîâ
+//                          Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ð° Ð´Ð»Ð¸Ð½ Ð¸ ÑÐ¼ÐµÑ‰ÐµÐ½Ð¸Ð¹ Ð² Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ðµ cp1251 utf8 ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð²
 
 struct Indexes_utf8 {
         unsigned    length{1};
@@ -329,26 +329,26 @@ inline constexpr unsigned char cp1251_page04_8[] = {                  //  c8 >= 
   0xa5, 0xb4                                      // 0x20-0x21
 };
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                      Äëÿ ïåðåêîäèðîâêè ñèìâîëîâ utf8  â  cp1251 ñèìâîëû
+//                      Ð”Ð»Ñ Ð¿ÐµÑ€ÐµÐºÐ¾Ð´Ð¸Ñ€Ð¾Ð²ÐºÐ¸ ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð² utf8  Ð²  cp1251 ÑÐ¸Ð¼Ð²Ð¾Ð»Ñ‹
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 inline constexpr unsigned char page_dc[3][64] = {
     {
         //d081   d082   d083   d084   d085   d086   d087   d088   d089   d08a   d08b   d08c   d08e   d08f
-        //  a8 ¨   80 €   81    aa ª   bd ½   b2 ²   af ¯   a3 £   8a Š   8c Œ   8e Ž   8d    a1 ¡   8f 
+        //  a8 Ð   80 Ð‚   81 Ðƒ   aa Ð„   bd Ð…   b2 Ð†   af Ð‡   a3 Ðˆ   8a Ð‰   8c ÐŠ   8e Ð‹   8d ÐŒ   a1 ÐŽ   8f Ð
         0,0xa8,0x80,0x81,0xaa,0xbd,0xb2,0xaf,0xa3,0x8a,0x8c,0x8e,0x8d,0,0xa1,0x8f,    // 0-f                                 // 00-0f
-        //0xd090, 0xd091, 0xd092, 0xd093, 0xd094, 0xd095, 0xd096, 0xd097,   // 10-17      À -
+        //0xd090, 0xd091, 0xd092, 0xd093, 0xd094, 0xd095, 0xd096, 0xd097,   // 10-17      Ð -
         //0xd098, 0xd099, 0xd09a, 0xd09b, 0xd09c, 0xd09d, 0xd09e, 0xd09f,   // 18-1f
         //0xd0a0, 0xd0a1, 0xd0a2, 0xd0a3, 0xd0a4, 0xd0a5, 0xd0a6, 0xd0a7,   // 20-27
-        //0xd0a8, 0xd0a9, 0xd0aa, 0xd0ab, 0xd0ac, 0xd0ad, 0xd0ae, 0xd0af,   // 28-2f          ß
-        //0xd0b0, 0xd0b1, 0xd0b2, 0xd0b3, 0xd0b4, 0xd0b5, 0xd0b6, 0xd0b7,   // 30-37      à - 
-        //0xd0b8, 0xd0b9, 0xd0ba, 0xd0bb, 0xd0bc, 0xd0bd, 0xd0be, 0xd0bf,   // 38-3f          ï
+        //0xd0a8, 0xd0a9, 0xd0aa, 0xd0ab, 0xd0ac, 0xd0ad, 0xd0ae, 0xd0af,   // 28-2f          Ð¯
+        //0xd0b0, 0xd0b1, 0xd0b2, 0xd0b3, 0xd0b4, 0xd0b5, 0xd0b6, 0xd0b7,   // 30-37      Ð° - 
+        //0xd0b8, 0xd0b9, 0xd0ba, 0xd0bb, 0xd0bc, 0xd0bd, 0xd0be, 0xd0bf,   // 38-3f          Ð¿
         0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,  // 10-1f
         0xd0,0xd1,0xd2,0xd3,0xd4,0xd5,0xd6,0xd7,0xd8,0xd9,0xda,0xdb,0xdc,0xdd,0xde,0xdf,  // 20-2f
         0xe0,0xe1,0xe2,0xe3,0xe4,0xe5,0xe6,0xe7,0xe8,0xe9,0xea,0xeb,0xec,0xed,0xee,0xef   // 30-3f
     },
     {
-        //{0xd180, 0xd181, 0xd182, 0xd183, 0xd184, 0xd185, 0xd186, 0xd187,   // 40-47        ð -
-        // 0xd188, 0xd189, 0xd18a, 0xd18b, 0xd18c, 0xd18d, 0xd18e, 0xd18f,   // 48-4f            ÿ
+        //{0xd180, 0xd181, 0xd182, 0xd183, 0xd184, 0xd185, 0xd186, 0xd187,   // 40-47        Ñ€ -
+        // 0xd188, 0xd189, 0xd18a, 0xd18b, 0xd18c, 0xd18d, 0xd18e, 0xd18f,   // 48-4f            Ñ
         0xf0,0xf1,0xf2,0xf3,0xf4,0xf5,0xf6,0xf7,0xf8,0xf9,0xfa,0xfb,0xfc,0xfd,0xfe,0xff,  // 0-f
         //d191,d192,d193,d194,d195,d196,d197,d198,d199,d19a,d19b,d19c,0, d19e,d19f
         0,0xb8,0x90,0x83,0xba,0xbe,0xb3,0xbf,0xbc,0x9a,0x9c,0x9e,0x9d,0,0xa2,0x9f,          // 10,11-1f
@@ -358,7 +358,7 @@ inline constexpr unsigned char page_dc[3][64] = {
     {
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,                                     // 0-f
         0xa5,0xb4,0,0,0,0,0,0,                                                     // 10-11 - 17
-        //   98 ˜  a0    a4 ¤  a6 ¦  a7 §  a9 ©  ab «  ac ¬  ad ­  ae ®  b0 °  b1 ±  b5 µ  b6 ¶  b7 ·  bb »
+        //   98 Â˜  a0 Â   a4 Â¤  a6 Â¦  a7 Â§  a9 Â©  ab Â«  ac Â¬  ad Â­  ae Â®  b0 Â°  b1 Â±  b5 Âµ  b6 Â¶  b7 Â·  bb Â»
         0x98,0,0,0,0,0,0,0,0xa0,0,0,0,0xa4,0,0xa6,0xa7,                      // 18-27
         0,0xa9,0,0xab,0xac,0xad,0xae,0,0xb0,0xb1,0,0,0,0xb5,0xb6,0xb7,         // 28-37
         0,0,0,0xbb,                                                           // 38-3b
@@ -379,11 +379,11 @@ constexpr
 unsigned cp1251_mb8tomb(unsigned char& c, const unsigned char* const p8) {    // c8 -> c  mb8 -> mb
     if(p8[0] <= 0x7f) { c = p8[0]; return 1; }
     const unsigned i = (p8[0]>>5) & 0xf9;           // 192 = C0     256 = 100
-    // çäåñü i ì.á. òîëüêî 0 è 1
-    // òåñòèðóåòñÿ íà 0x20  => 8x,   9x,   ax, bx, cx,  dx íå ïðîõîäÿò, à ex ïðîõîäèò
+    // Ð·Ð´ÐµÑÑŒ i Ð¼.Ð±. Ñ‚Ð¾Ð»ÑŒÐºÐ¾ 0 Ð¸ 1
+    // Ñ‚ÐµÑÑ‚Ð¸Ñ€ÑƒÐµÑ‚ÑÑ Ð½Ð° 0x20  => 8x,   9x,   ax, bx, cx,  dx Ð½Ðµ Ð¿Ñ€Ð¾Ñ…Ð¾Ð´ÑÑ‚, Ð° ex Ð¿Ñ€Ð¾Ñ…Ð¾Ð´Ð¸Ñ‚
     //                0x03            c2 -> 02    d0 -> 00 d1 ->01 d2 -> 02
-    if(i == 0) { c = page_dc[p8[0] & 0x03] [ (p8[1] - 0x80)]; return 2; }  // 1-ûé èíäåêñ ì.á. 3 (ôîðìàëüíî)
-                                                                                  // 0x40 = 64 = äëèíà page_dc[x]  
+    if(i == 0) { c = page_dc[p8[0] & 0x03] [ (p8[1] - 0x80)]; return 2; }  // 1-Ñ‹Ð¹ Ð¸Ð½Ð´ÐµÐºÑ Ð¼.Ð±. 3 (Ñ„Ð¾Ñ€Ð¼Ð°Ð»ÑŒÐ½Ð¾)
+                                                                                  // 0x40 = 64 = Ð´Ð»Ð¸Ð½Ð° page_dc[x]  
     else
     if(i == 1) { c = page_e2[((p8[1] & 0x04) >> 2)  | ((p8[2] & 0x3f) - 0x10)];   return 3; }
     return 4;
@@ -394,10 +394,11 @@ unsigned cp1251_mb8tomb(unsigned char* const r, const unsigned char* const p8) {
     if(p8[0] <= 0x7f) { *r = p8[0]; return 1; }
     const unsigned i = (p8[0]>>5) & 0xf9;
 
-    if(i == 0) { *r = page_dc[p8[0] & 0x03] [(p8[1] - 0x80)]; return 2; }   // 1-ûé èíäåêñ ì.á. 3 (ôîðìàëüíî)
+    if(i == 0) { *r = page_dc[p8[0] & 0x03] [(p8[1] - 0x80)]; return 2; }   // 1-Ñ‹Ð¹ Ð¸Ð½Ð´ÐµÐºÑ Ð¼.Ð±. 3 (Ñ„Ð¾Ñ€Ð¼Ð°Ð»ÑŒÐ½Ð¾)
     else
     if(i == 1)  
     { *r = page_e2[((p8[1] & 0x04) >> 2)  | ((p8[2] & 0x3f) - 0x10)];   return 3; }
     return 4;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+

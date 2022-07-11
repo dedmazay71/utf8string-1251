@@ -1,15 +1,15 @@
 //
 //                      str8_utils.hpp   --  Alexander Prilepsky 2021
 //
-// Этот заголовочный файл содержит функции, оперирующие с UTF-8 последовательностями символов
+// Р­С‚РѕС‚ Р·Р°РіРѕР»РѕРІРѕС‡РЅС‹Р№ С„Р°Р№Р» СЃРѕРґРµСЂР¶РёС‚ С„СѓРЅРєС†РёРё, РѕРїРµСЂРёСЂСѓСЋС‰РёРµ СЃ UTF-8 РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЏРјРё СЃРёРјРІРѕР»РѕРІ
 //
-// ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ "КАК ЕСТЬ", БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ,
-// ЯВНЫЕ ИЛИ ПОДРАЗУМЕВАЕМЫЕ, ВКЛЮЧАЯ, НО НЕ ОГРАНИЧИВАЯСЬ ГАРАНТИЯМИ
-// ТОВАРНАЯ ПРИГОДНОСТЬ, ПРИГОДНОСТЬ ДЛЯ ОПРЕДЕЛЕННОЙ ЦЕЛИ И ОТСУТСТВИЕ НАРУШЕНИЙ.
-// НИ В КОЕМ СЛУЧАЕ АВТОР НЕ НЕСЕТ ОТВЕТСТВЕННОСТИ ЗА КАКИЕ-ЛИБО ПРЕТЕНЗИИ, УБЫТКИ ИЛИ
-// ИНАЯ ОТВЕТСТВЕННОСТЬ, БУДЬ ТО В СИЛУ ДОГОВОРА, ДЕЛИКТА ИЛИ ИНЫМ ОБРАЗОМ,
-// ВЫТЕКАЮЩИЕ ИЗ, ИЛИ В СВЯЗИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ ИЛИ ИСПОЛЬЗОВАНИЕМ ИЛИ
-// ДРУГИЕ СДЕЛКИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ.
+// РџР РћР“Р РђРњРњРќРћР• РћР‘Р•РЎРџР•Р§Р•РќРР• РџР Р•Р”РћРЎРўРђР’Р›РЇР•РўРЎРЇ "РљРђРљ Р•РЎРўР¬", Р‘Р•Р— РљРђРљРРҐ-Р›РР‘Рћ Р“РђР РђРќРўРР™,
+// РЇР’РќР«Р• РР›Р РџРћР”Р РђР—РЈРњР•Р’РђР•РњР«Р•, Р’РљР›Р®Р§РђРЇ, РќРћ РќР• РћР“Р РђРќРР§РР’РђРЇРЎР¬ Р“РђР РђРќРўРРЇРњР
+// РўРћР’РђР РќРђРЇ РџР РР“РћР”РќРћРЎРўР¬, РџР РР“РћР”РќРћРЎРўР¬ Р”Р›РЇ РћРџР Р•Р”Р•Р›Р•РќРќРћР™ Р¦Р•Р›Р Р РћРўРЎРЈРўРЎРўР’РР• РќРђР РЈРЁР•РќРР™.
+// РќР Р’ РљРћР•Рњ РЎР›РЈР§РђР• РђР’РўРћР  РќР• РќР•РЎР•Рў РћРўР’Р•РўРЎРўР’Р•РќРќРћРЎРўР Р—Рђ РљРђРљРР•-Р›РР‘Рћ РџР Р•РўР•РќР—РР, РЈР‘Р«РўРљР РР›Р
+// РРќРђРЇ РћРўР’Р•РўРЎРўР’Р•РќРќРћРЎРўР¬, Р‘РЈР”Р¬ РўРћ Р’ РЎРР›РЈ Р”РћР“РћР’РћР Рђ, Р”Р•Р›РРљРўРђ РР›Р РРќР«Рњ РћР‘Р РђР—РћРњ,
+// Р’Р«РўР•РљРђР®Р©РР• РР—, РР›Р Р’ РЎР’РЇР—Р РЎ РџР РћР“Р РђРњРњРќР«Рњ РћР‘Р•РЎРџР•Р§Р•РќРР•Рњ РР›Р РРЎРџРћР›Р¬Р—РћР’РђРќРР•Рњ РР›Р
+// Р”Р РЈР“РР• РЎР”Р•Р›РљР РЎ РџР РћР“Р РђРњРњРќР«Рњ РћР‘Р•РЎРџР•Р§Р•РќРР•Рњ.
 //
 //                      c++ Visual Studio 2022 version 17.2
 //
@@ -54,10 +54,10 @@ int compare_two_utf8_symbols(const auto* const p1, const auto* const p2) noexcep
     return 0;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                         Сравнение UTF8 ANSI символов без учета регистра
+//                         РЎСЂР°РІРЅРµРЅРёРµ UTF8 ANSI СЃРёРјРІРѕР»РѕРІ Р±РµР· СѓС‡РµС‚Р° СЂРµРіРёСЃС‚СЂР°
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 struct iequal_to_ansi_8_chars {
-//                              сравнивает chars ( char8_t* -> char - compare
+//                              СЃСЂР°РІРЅРёРІР°РµС‚ chars ( char8_t* -> char - compare
     [[nodiscard]] constexpr 
     bool operator() (const char8_t* const p1, const char8_t* const p2) const noexcept {
         return cp1251_mb8tolowermb((unsigned char*)p1) == cp1251_mb8tolowermb((unsigned char*)p2);
@@ -70,7 +70,7 @@ struct iequal_to_ansi_8_chars {
 }; 
 //------------------------
 struct iless_ansi_8_chars {
-//                              сравнивает chars ( char8_t* -> char - compare
+//                              СЃСЂР°РІРЅРёРІР°РµС‚ chars ( char8_t* -> char - compare
     [[nodiscard]] constexpr 
     bool operator() (const char8_t* const p1, const char8_t* const p2) const noexcept {
         return cp1251_mb8tolowermb((unsigned char*)p1) < cp1251_mb8tolowermb((unsigned char*)p2);
@@ -83,7 +83,7 @@ struct iless_ansi_8_chars {
 };
 //------------------------
 struct iless_equal_ansi_8_chars {         //  <=
-//                              сравнивает chars ( char8_t* -> char - compare
+//                              СЃСЂР°РІРЅРёРІР°РµС‚ chars ( char8_t* -> char - compare
     [[nodiscard]] constexpr 
     auto operator() (const char8_t* const p1, const char8_t* const p2) const noexcept {
         return cp1251_mb8tolowermb((unsigned char*)p1) <= cp1251_mb8tolowermb((unsigned char*)p2);
@@ -96,7 +96,7 @@ struct iless_equal_ansi_8_chars {         //  <=
 };
 #define iless_equal_symb_utf8_ansi iless_equal_ansi_8_chars
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                          Сравнение UTF-8 (ANSI)  СТРОК  без учета регистра
+//                          РЎСЂР°РІРЅРµРЅРёРµ UTF-8 (ANSI)  РЎРўР РћРљ  Р±РµР· СѓС‡РµС‚Р° СЂРµРіРёСЃС‚СЂР°
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 [[nodiscard]] constexpr 
 int32_t icompare_ansi_strings_impl_8(const std::u8string_view s1, const std::u8string_view s2, 
@@ -117,26 +117,26 @@ int32_t icompare_ansi_strings_8(const std::u8string_view s1, const std::u8string
     return n1 <= n2? icompare_ansi_strings_impl_8(s1, s2, n1, n2) : -icompare_ansi_strings_impl_8(s2, s1, n2, n1);
 }
 //---------------------
-struct iless_ansi8 {                          // предикат
+struct iless_ansi8 {                          // РїСЂРµРґРёРєР°С‚
     [[nodiscard]] constexpr 
     bool operator() (const std::u8string_view s1, const std::u8string_view s2) const noexcept {
         return icompare_ansi_strings_8(s1, s2) < 0;
     }
 };
-struct iless_equal_to_ansi8 {                          // предикат
+struct iless_equal_to_ansi8 {                          // РїСЂРµРґРёРєР°С‚
     [[nodiscard]] constexpr 
     bool operator() (const std::u8string_view s1, const std::u8string_view s2) const noexcept {
         return !(icompare_ansi_strings_8(s1, s2) > 0);
     }
 };
-struct iequal_to_ansi8 {                         // предикат
+struct iequal_to_ansi8 {                         // РїСЂРµРґРёРєР°С‚
     [[nodiscard]] constexpr 
     bool operator() (const std::u8string_view s1, const std::u8string_view s2) const noexcept {
         return icompare_ansi_strings_8(s1, s2) == 0;
     }
 };
 //////////////////////////////////////  SORT    ////////////////////////////////////////////////////////////
-//                            Сортировка для  UTF8 ANSI строк
+//                            РЎРѕСЂС‚РёСЂРѕРІРєР° РґР»СЏ  UTF8 ANSI СЃС‚СЂРѕРє
 #define isort_ansi8(x)          sort<iless_ansi8>(x)
 #define isort_parallel_ansi8(x) sort_parallel<iless_ansi8>(x)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -179,7 +179,7 @@ std::wstring utf8_to_wstring_ansi_o(const std::u8string_view str) {
     return result;
 } 
 //-------------------------------------------------------------------------------------------------------------
-// эта пошустрее предыдущей 
+// СЌС‚Р° РїРѕС€СѓСЃС‚СЂРµРµ РїСЂРµРґС‹РґСѓС‰РµР№ 
 [[nodiscard]] inline
 std::wstring utf8_to_wstring(const std::u8string_view srcw) {
     if(srcw.empty()) return std::wstring{};
@@ -214,7 +214,7 @@ std::wstring utf8_to_wstring(const std::u8string_view srcw) {
             if(ucs < 0x10000) {
                 dst[count] = static_cast<unsigned short>(ucs);
             } else {
-                // сделать суррогатную пару
+                // СЃРґРµР»Р°С‚СЊ СЃСѓСЂСЂРѕРіР°С‚РЅСѓСЋ РїР°СЂСѓ
                 if(count+2 >= dstlen) break;
                 dst[count] = (((ucs-0x10000u)>>10)&0x3ff) | 0xd800;
                 dst[++count] = (ucs&0x3ff) | 0xdc00;
@@ -244,7 +244,7 @@ std::u8string wstring_to_utf8_o(const std::wstring_view str) {
     return result;
 }
 //-------------------------------------------------------------------------------------------------------------
-//                                  эта пошустрее предыдущей 
+//                                  СЌС‚Р° РїРѕС€СѓСЃС‚СЂРµРµ РїСЂРµРґС‹РґСѓС‰РµР№ 
 [[nodiscard]] inline 
 std::u8string wstring_to_utf8_ansi(const std::wstring_view srcw) {       // for ANSI
     if(srcw.empty()) return std::u8string{};//u8""s;
@@ -252,7 +252,7 @@ std::u8string wstring_to_utf8_ansi(const std::wstring_view srcw) {       // for 
     unsigned              i(0), count(0);
     const size_t          srclen(srcw.size());
     const wchar_t* const  src = srcw.data();
-    // подсчитаем  длину utf8 строки
+    // РїРѕРґСЃС‡РёС‚Р°РµРј  РґР»РёРЅСѓ utf8 СЃС‚СЂРѕРєРё
     while(i < srclen) {
         const unsigned ucs = src[i++];
         if(ucs < 0x80U) {
@@ -290,7 +290,7 @@ std::u8string wstring_to_utf8_ansi(const std::wstring_view srcw) {       // for 
             dst[count++] = 0x80 | (ucs & 0x3F);
         } else {
 J1:
-            // все остальные имеют 3 байта
+            // РІСЃРµ РѕСЃС‚Р°Р»СЊРЅС‹Рµ РёРјРµСЋС‚ 3 Р±Р°Р№С‚Р°
             if(count+3 >= dstlen) break;
             dst[count++] = static_cast<char>(0xe0 | (ucs >> 12));
             dst[count++] = 0x80 | ((ucs >> 6) & 0x3F);
@@ -342,7 +342,7 @@ std::u8string wchar_to_utf8_ansi(const wchar_t c) {
             dst[count++] = 0x80 | (ucs & 0x3F);
         } else {
 J1:
-            // все остальные имеют 3 байта
+            // РІСЃРµ РѕСЃС‚Р°Р»СЊРЅС‹Рµ РёРјРµСЋС‚ 3 Р±Р°Р№С‚Р°
             if(count+3 >= dstlen) break;
             dst[count++] = static_cast<char>(0xe0 | (ucs >> 12));
             dst[count++] = 0x80 | ((ucs >> 6) & 0x3F);
@@ -375,7 +375,7 @@ std::string utf8_to_string_ansi_o(const std::u8string_view str) {  // current lo
     return  wstring_to_string_ansi(utf8_to_wstring(str));
 }
 //-------------------------------------------------------------------------------------------------------------
-// эта в 2 раза шустрее предыдущей
+// СЌС‚Р° РІ 2 СЂР°Р·Р° С€СѓСЃС‚СЂРµРµ РїСЂРµРґС‹РґСѓС‰РµР№
 [[nodiscard]] inline // constexpr
 std::string utf8_to_string_ansi(const std::u8string_view src) {  // for ANSI
     //const unsigned char* p    = (const unsigned char*)src.data();
@@ -389,14 +389,14 @@ std::string utf8_to_string_ansi(const std::u8string_view src) {  // for ANSI
     return dst;
 }
 //----------------------------------------------------------------------------------------
-template<class T1, class T2>    // не для всей строки   n1 = позиция, n2 = кол-во символов
-                                //                    без проверок диапазонов !!!!!
+template<class T1, class T2>    // РЅРµ РґР»СЏ РІСЃРµР№ СЃС‚СЂРѕРєРё   n1 = РїРѕР·РёС†РёСЏ, n2 = РєРѕР»-РІРѕ СЃРёРјРІРѕР»РѕРІ
+                                //                    Р±РµР· РїСЂРѕРІРµСЂРѕРє РґРёР°РїР°Р·РѕРЅРѕРІ !!!!!
 [[nodiscard]] inline
 std::string utf8_to_string_ansi(const std::u8string_view src, const T1 _pos, const T2 n2) {  // for ANSI
     const unsigned char*     p = (const unsigned char*)src.data();
     std::string              dst(static_cast<size_t>(n2), '\0');
 
-    for(size_t n = static_cast<size_t>(_pos); n > 0; --n) p += utf8len(*p);   // p - на позицию _pos
+    for(size_t n = static_cast<size_t>(_pos); n > 0; --n) p += utf8len(*p);   // p - РЅР° РїРѕР·РёС†РёСЋ _pos
     for(std::span<unsigned char> r = {(unsigned char*) dst.data(), static_cast<size_t>(n2)};
                                                                             unsigned char& x: r) 
         p += cp1251_mb8tomb(x, p);
@@ -415,7 +415,7 @@ char utf8_to_char_ansi(const std::u8string_view src, T pos) {  // for ANSI
     return static_cast<char>(x);
 }
 //----------------------------------------------------------------------------------------
-                            // Символ в позиции 0
+                            // РЎРёРјРІРѕР» РІ РїРѕР·РёС†РёРё 0
 [[nodiscard]] constexpr 
 char utf8_to_char_ansi(const char8_t* const p) {  // for ANSI
     unsigned char x;
@@ -436,7 +436,7 @@ std::string _from_utf8(const std::u8string_view str, [[maybe_unused]] const _loc
 std::u8string string_to_utf8_ansi_d(const std::string_view src) {
     std::u8string dstx(u8size(src), u8'\0');
     for(char8_t* p = dstx.data(); const unsigned char& c: src) {
-        copy_plus(p, table_utf8+table_indexes[c].pos, (int32_t)(table_indexes[c].length)); // copy_plus перемещает p
+        copy_plus(p, table_utf8+table_indexes[c].pos, (int32_t)(table_indexes[c].length)); // copy_plus РїРµСЂРµРјРµС‰Р°РµС‚ p
     }
 
     return dstx;
@@ -467,7 +467,7 @@ std::u8string _to_utf8 (const std::wstring_view str, [[maybe_unused]] const _loc
     return lc? wstring_to_utf8(str, lc) : wstring_to_utf8_ansi(str);
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                    переданный ptr перемещается на следующий CoPo(utf8 sequence, CodePointer)
+//                    РїРµСЂРµРґР°РЅРЅС‹Р№ ptr РїРµСЂРµРјРµС‰Р°РµС‚СЃСЏ РЅР° СЃР»РµРґСѓСЋС‰РёР№ CoPo(utf8 sequence, CodePointer)
 template <class byte_pointer, 
             std::enable_if_t<std::is_pointer_v<byte_pointer> || std::is_iterator_v<byte_pointer>, int> = 0>
 constexpr 
@@ -479,7 +479,7 @@ void u8_next(byte_pointer& it) noexcept {
                       std::is_same_v<Nptr, char8_t*> ||
                       //std::is_same_v<Nptr, const char8_t*> ||
                       std::is_same_v<Noptr, uint8_t>, "ONLY FOR char8_t*");
-        auto& it_ptr = it._Ptr;                   // не применимо для iter8
+        auto& it_ptr = it._Ptr;                   // РЅРµ РїСЂРёРјРµРЅРёРјРѕ РґР»СЏ iter8
         it_ptr += utf8len(*it_ptr);
     }
     else {
@@ -489,7 +489,7 @@ void u8_next(byte_pointer& it) noexcept {
     }
 }
 //------------------------------------------------------------------------------
-//                    возвращается указатель на следующий CoPo без перемещения переданного)
+//                    РІРѕР·РІСЂР°С‰Р°РµС‚СЃСЏ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰РёР№ CoPo Р±РµР· РїРµСЂРµРјРµС‰РµРЅРёСЏ РїРµСЂРµРґР°РЅРЅРѕРіРѕ)
 template <class byte_pointer, 
             std::enable_if_t<std::is_pointer_v<byte_pointer> || std::is_iterator_v<byte_pointer>, int> = 0>
 [[nodiscard]] constexpr 
@@ -501,7 +501,7 @@ auto u8_peek_next(const byte_pointer it) noexcept {
                       std::is_same_v<Nptr, char8_t*> ||
                       std::is_same_v<Nptr, const char8_t*> ||
                       std::is_same_v<Noptr, uint8_t>, "ONLY FOR char8_t*");
-        const auto it_ptr = it._Ptr;           // не применимо для iter8
+        const auto it_ptr = it._Ptr;           // РЅРµ РїСЂРёРјРµРЅРёРјРѕ РґР»СЏ iter8
         return it_ptr + utf8len(*it_ptr);
     }
     else {
@@ -511,7 +511,7 @@ auto u8_peek_next(const byte_pointer it) noexcept {
     }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                          дистанция В СИМВОЛАХ между двумя code pointers  
+//                          РґРёСЃС‚Р°РЅС†РёСЏ Р’ РЎРРњР’РћР›РђРҐ РјРµР¶РґСѓ РґРІСѓРјСЏ code pointers  
 //                                    ==========
 template <class byte_pointer>
 requires std::is_pointer_v<byte_pointer> || std::is_iterator_v<byte_pointer>
@@ -544,8 +544,8 @@ ptrdiff_t u8_distance(byte_pointer first, byte_pointer last) noexcept {
     return dist;
 }
 //-------------------------------------------------------------------------------------------------------------
-//               Преобразование позиции, выраженной в СИМВОЛАХ, в позицию в БАЙТАХ
-//               дистанция в БАЙТАХ между code pointer и позицией pos(В СИМВОЛАХ)  
+//               РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РїРѕР·РёС†РёРё, РІС‹СЂР°Р¶РµРЅРЅРѕР№ РІ РЎРРњР’РћР›РђРҐ, РІ РїРѕР·РёС†РёСЋ РІ Р‘РђР™РўРђРҐ
+//               РґРёСЃС‚Р°РЅС†РёСЏ РІ Р‘РђР™РўРђРҐ РјРµР¶РґСѓ code pointer Рё РїРѕР·РёС†РёРµР№ pos(Р’ РЎРРњР’РћР›РђРҐ)  
 //                           ======                                   ========== 
 template <class byte_pointer, 
             std::enable_if_t<std::is_pointer_v<byte_pointer> || std::is_iterator_v<byte_pointer>, int> = 0>
@@ -590,21 +590,21 @@ size_t u8_distance(byte_pointer cp, const ptrdiff_t pos) noexcept {
     }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                      переданный CODE POINTER перемещается на дистанцию pos(В СИМВОЛАХ)
+//                      РїРµСЂРµРґР°РЅРЅС‹Р№ CODE POINTER РїРµСЂРµРјРµС‰Р°РµС‚СЃСЏ РЅР° РґРёСЃС‚Р°РЅС†РёСЋ pos(Р’ РЎРРњР’РћР›РђРҐ)
 //                                                                           ==========
 template <class byte_pointer,
             std::enable_if_t<std::is_pointer_v<byte_pointer> || std::is_iterator_v<byte_pointer>, int> = 0>
 inline
 void u8_advance(byte_pointer& it, const ptrdiff_t pos) noexcept {
     if constexpr(std::is_class_v<byte_pointer>) {
-        using Noptr = std::remove_const_t<typename byte_pointer::value_type>;  // для utf8string -> Orig<4>
+        using Noptr = std::remove_const_t<typename byte_pointer::value_type>;  // РґР»СЏ utf8string -> Orig<4>
         using Nptr  = std::remove_const_t<typename byte_pointer::pointer>;
         static_assert(std::is_same_v<Noptr, char8_t> || 
                       std::is_same_v<Nptr, char8_t*> ||
                       std::is_same_v<Nptr, const char8_t*> ||
                       std::is_same_v<Noptr, uint8_t>, "ONLY FOR char8_t*");
         if(pos >= 0)
-            it += u8_distance(it._Ptr, pos);                  // _Ptr не явл-ся членом iter8. it's good!
+            it += u8_distance(it._Ptr, pos);                  // _Ptr РЅРµ СЏРІР»-СЃСЏ С‡Р»РµРЅРѕРј iter8. it's good!
         else
             it -= u8_distance(it._Ptr, pos);
     }
@@ -618,7 +618,7 @@ void u8_advance(byte_pointer& it, const ptrdiff_t pos) noexcept {
      }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//               Return ptr to code pointer на дистанции pos(В СИМВОЛАХ) от переданного CoPo(CodePointer)
+//               Return ptr to code pointer РЅР° РґРёСЃС‚Р°РЅС†РёРё pos(Р’ РЎРРњР’РћР›РђРҐ) РѕС‚ РїРµСЂРµРґР°РЅРЅРѕРіРѕ CoPo(CodePointer)
 //                                                           ==========   
 template <class byte_pointer, 
             std::enable_if_t<std::is_pointer_v<byte_pointer> || std::is_iterator_v<byte_pointer>, int> = 0>
@@ -628,7 +628,7 @@ auto u8_fwd_n(byte_pointer bp, const ptrdiff_t pos) noexcept {
     return bp;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                 Преобразование позиции, выраженной в БАЙТАХ, в позицию в СИМВОЛАХ
+//                 РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РїРѕР·РёС†РёРё, РІС‹СЂР°Р¶РµРЅРЅРѕР№ РІ Р‘РђР™РўРђРҐ, РІ РїРѕР·РёС†РёСЋ РІ РЎРРњР’РћР›РђРҐ
 //                                                      =======             ========
 template<class byte_pointer, 
             std::enable_if_t<std::is_pointer_v<byte_pointer>, int> = 0>
@@ -663,7 +663,7 @@ void u8_prev(byte_pointer& _p) noexcept {
                       std::is_same_v<Nptr, char8_t*> ||
                       std::is_same_v<Nptr, const char8_t*> ||
                       std::is_same_v<Noptr, uint8_t>, "ONLY FOR char8_t*");
-        auto&  p_ptr = _p._Ptr;               // не применимо для iter8
+        auto&  p_ptr = _p._Ptr;               // РЅРµ РїСЂРёРјРµРЅРёРјРѕ РґР»СЏ iter8
         while(u8_is_trail(*(--p_ptr)));
     }
     else {
@@ -685,7 +685,7 @@ auto u8_peek_prev(byte_pointer _p) noexcept {
                       std::is_same_v<Nptr, const char8_t*> ||
                       std::is_same_v<Noptr, uint8_t>, "ONLY FOR char8_t*");
         auto   p_pt  = _p;
-        auto&  p_ptr = p_pt._Ptr;                   // не применимо для iter8
+        auto&  p_ptr = p_pt._Ptr;                   // РЅРµ РїСЂРёРјРµРЅРёРјРѕ РґР»СЏ iter8
         while(u8_is_trail(*(--p_ptr)));
         return p_pt;
     }
@@ -704,7 +704,7 @@ std::u8string char_to_utf8_ansi_tab_char(const char c) noexcept {
     return {(char8_t*)tab_char::tab_utf8[(unsigned char)c].s8, tab_char::tab_utf8[(unsigned char)c].len};
 }
 //----------------------------------------------------------------------------------------------------
-//                                  _count символов c в u8string
+//                                  _count СЃРёРјРІРѕР»РѕРІ c РІ u8string
 [[nodiscard]] inline
 std::u8string char_to_utf8_ansi_tab_char(size_t count, const char c) {
     auto len = len_ch_to_ch8((unsigned char)c);
@@ -716,13 +716,13 @@ std::u8string char_to_utf8_ansi_tab_char(size_t count, const char c) {
     }
     return dst;
 }
-//                                  _count символов wc в u8string
+//                                  _count СЃРёРјРІРѕР»РѕРІ wc РІ u8string
 [[nodiscard]] inline
 std::u8string wchar_to_utf8_ansi(const size_t count, const wchar_t wc) {
     return _to_utf8(std::wstring(count, wc));
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                  (w)string с позиции pos длиной count в u8string
+//                                  (w)string СЃ РїРѕР·РёС†РёРё pos РґР»РёРЅРѕР№ count РІ u8string
 [[nodiscard]] inline
 std::u8string string_to_utf8_ansi_tab_char(const std::string_view src, const size_t pos, const size_t count=std::string::npos) {
     if(pos >= src.size()) return std::u8string{};
@@ -762,7 +762,7 @@ std::u8string utf8_string_ansi_substr(const char8_t* const pbeg, const size_t co
     return { pbeg, u8_distance(pbeg, (std::min)(count, u8size(pbeg))) }; 
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                      substr строки utf8 символов
+//                                      substr СЃС‚СЂРѕРєРё utf8 СЃРёРјРІРѕР»РѕРІ
 [[nodiscard]] inline                            // pos and count in SYMBOLS
 std::u8string utf8_string_ansi_substr(const std::u8string_view src, size_t pos, size_t count=std::string::npos) {
     const size_t len = u8size(src);
@@ -791,9 +791,10 @@ std::u8string assign_symbol_string8_to_string8(const std::u8string_view src, con
 std::u8string ret_string(const char8_t* const p) {
         return {p, p+utf8len(*p)};
 }
-//--------------------            между двумя указателями  
-[[nodiscard]] inline               // не промахнись, Асунта!!!!  (с указателями-то)
+//--------------------            РјРµР¶РґСѓ РґРІСѓРјСЏ СѓРєР°Р·Р°С‚РµР»СЏРјРё  
+[[nodiscard]] inline               // РЅРµ РїСЂРѕРјР°С…РЅРёСЃСЊ, РђСЃСѓРЅС‚Р°!!!!  (СЃ СѓРєР°Р·Р°С‚РµР»СЏРјРё-С‚Рѕ)
 std::u8string ret_string(const char8_t* const p1, const char8_t* const p2) {
         return {p1, static_cast<size_t>(p2 - p1)};
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
